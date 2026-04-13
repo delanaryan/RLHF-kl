@@ -1,0 +1,13 @@
+# --- Core LLM & API ---
+ollama             # Official Python library to talk to your Llama-3 server
+openai             # Standardized API wrapper for Ollama local server
+
+# --- Analysis & Metrics ---
+torch              # Required for GPT-2 and Sentiment models
+transformers       # For loading GPT-2 (Perplexity) and RoBERTa (Reward)
+accelerate         # Handles memory-efficient model loading on Mac
+
+# --- Data & Visuals ---
+pandas             # Managing the experimental logs
+matplotlib         # Plotting the Reward vs. Perplexity frontier
+scikit-learn       # Basic normalization and data scaling
