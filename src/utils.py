@@ -4,3 +4,7 @@
     # clean text
     # seed randomness
     # make folders if missing
+
+def csvToDataframe (filePath) : 
+
+    promptDataframe = pd.read_csv

@@ -5,8 +5,14 @@ In other words, this project explores why AI models sometimes become "delusional
 
 
 # How to run
-...
+Run `curl -fsSL https://ollama.com/install.sh | sh` to download Ollama
+To run Mistral locally, we need to follow the follow the following commands :
+```
+ollama pull mistral
+ollama run mistral
+```
 
+To make sure that Ollama can run using our python code, we need to do : `pip install ollama pandas`
 
 # File structure 
 ```
