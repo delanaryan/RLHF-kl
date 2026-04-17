@@ -9,7 +9,7 @@ In other words, this project explores why AI models sometimes become "delusional
 
 
 # File structure 
-
+```
 RLHF-KL/
 │
 ├── .gitignore
@@ -34,5 +34,4 @@ RLHF-KL/
 │   └── run_experiment.py
 │
 └── results/
-    ├── figures/
-    └── samples/
+```
