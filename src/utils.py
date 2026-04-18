@@ -5,6 +5,10 @@
     # seed randomness
     # make folders if missing
 
-def csvToDataframe (filePath) : 
+import csv
 
-    promptDataframe = pd.read_csv
+def csvToArr (fileName) : 
+    with open(fileName, mode='r', encoding='utf-8') as file:
+        reader = csv.reader(file)
+        array = list(reader)
+    return array
