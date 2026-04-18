@@ -5,7 +5,8 @@ In other words, this project explores why AI models sometimes become "delusional
 
 
 # How to run
-Run `curl -fsSL https://ollama.com/install.sh | sh` to download Ollama
+Run `curl -fsSL https://ollama.com/install.sh | sh` to download Ollama.
+
 To run Mistral locally, we need to follow the follow the following commands :
 ```
 ollama pull mistral
