@@ -15,8 +15,10 @@ import pandas as pd
 
 if __name__ == "__main__":
     promptArr = utils.csvToArr(config.PROMPT_PATH)
-    generate.getResponses(promptArr, config.N, config.RAW_GENERATIONS_PATH)
+    # generate.getAllResponses(promptArr, config.N, config.RAW_GENERATIONS_PATH)
+    generate.printNresponses(promptArr, 5, 5)
 
-    df = pd.read_csv(config.RAW_GENERATIONS_PATH)
-    print(df.head())
-    print(df.shape)
+    # debugging
+    # df = pd.read_csv(config.RAW_GENERATIONS_PATH)
+    # print(df.head())
+    # print(df.shape)
