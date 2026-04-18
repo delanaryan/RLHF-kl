@@ -16,7 +16,10 @@ import pandas as pd
 if __name__ == "__main__":
     promptArr = utils.csvToArr(config.PROMPT_PATH)
     # generate.getAllResponses(promptArr, config.N, config.RAW_GENERATIONS_PATH)
-    generate.printNresponses(promptArr, 5, 5)
+    # generate.getResponsesChunk(promptArr, 1, 5, 16)
+    # generate.getResponsesChunk(promptArr, 6, 10, 16)
+    # generate.getResponsesChunk(promptArr, 11, 14, 16)
+    generate.getResponsesChunk(promptArr, 10, 10, 16)
 
     # debugging
     # df = pd.read_csv(config.RAW_GENERATIONS_PATH)

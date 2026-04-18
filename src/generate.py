@@ -35,11 +35,25 @@ def getAllResponses(promptArray, maxN, rawGenerationCSVPath) :
             print([prompt_id, i + 1, curResponse])
     return
 
-def printNresponses(promptArray, prompt_id, n) :
-    row = promptArray[prompt_id]   
-    prompt = row[1]
+def getResponsesChunk (promptArray, start_prompt_id, end_prompt_id, maxN) : 
+    nameOfNewFile = "data/rawGenerations" + str(start_prompt_id) + "to" + str(end_prompt_id) + ".csv"
+    
+    with open(nameOfNewFile, "w", newline="", encoding="utf-8") as file:
+        writer = csv.writer(file)
+        writer.writerow(["prompt_id", "candidate_id", "response"])
+        
+        for row in promptArray[start_prompt_id : end_prompt_id + 1]:
+            prompt_id = row[0]
+            prompt = row[1]
 
-    for i in range(n):
-        print(f"Generating candidate {i+1} for prompt {prompt_id}...")
-        curResponse = generateSingleResponse(prompt)
-        print(prompt_id, i + 1, curResponse)
+            # debugging
+            # print(prompt_id)
+            # print(prompt)
+
+            for i in range(maxN):
+                curResponse = generateSingleResponse(prompt)
+                writer.writerow([prompt_id, i + 1, curResponse])
+                
+                # debugging 
+                print(prompt_id, i + 1, curResponse)
+    return
