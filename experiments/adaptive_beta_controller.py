@@ -27,10 +27,10 @@ import config
 @dataclass
 class AdaptiveControllerConfig:
     """Configuration for the Adaptive β Controller"""
-    initial_beta: float = 0.1
+    initial_beta: float = 0.01
     target_kl: float = 0.5  # Target KL divergence threshold
-    kl_upper_threshold: float = 0.75 
-    kl_lower_threshold: float = 0.25  
+    kl_upper_threshold: float = 0.70 
+    kl_lower_threshold: float = 0.45  
     beta_increase_factor: float = 1.2  # Tighten leash
     beta_decrease_factor: float = 0.8  # Loosen leash
     beta_min: float = 0.01  # Minimum β to prevent over-loosening
