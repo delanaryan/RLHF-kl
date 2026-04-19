@@ -11,7 +11,8 @@ import csv
 PERPLEXITY_MODEL = "gpt2"   # for the perplexity score
 SENTIMENT_MODEL = "cardiffnlp/twitter-roberta-base-sentiment" # for the sentiment score
 
-sentiment_tokenizer = AutoTokenizer.from_pretrained(SENTIMENT_MODEL)
+# Sentiment tokenizer's purpose is to convert the input text into a format that the sentiment model can understand, while the sentiment model's purpose is to analyze the sentiment of the input text and provide a sentiment score.
+sentiment_tokenizer = AutoTokenizer.from_pretrained(SENTIMENT_MODEL) 
 sentiment_model = AutoModelForSequenceClassification.from_pretrained(SENTIMENT_MODEL)
 
 perplexity_tokenizer = AutoTokenizer.from_pretrained(PERPLEXITY_MODEL)
@@ -20,6 +21,11 @@ perplexity_model = AutoModelForCausalLM.from_pretrained(PERPLEXITY_MODEL)
 # calculating the sentiment score
 
 def getSentimentScore (response) : 
+    '''
+    Calculates the sentiment score for a given response using the sentiment model.
+    input: a single response
+    output: the sentiment score for the response
+    '''
     encoded_input = sentiment_tokenizer(response, return_tensors="pt", truncation=True, max_length=512)
     output = sentiment_model(**encoded_input)
 
@@ -31,6 +37,11 @@ def getSentimentScore (response) :
 
 
 def getAllSentimentScores (responsesArr) : 
+    '''
+    Calculates the sentiment scores for all responses in the responses array.
+    input: an array of responses
+    output: an array of sentiment scores for each response
+    '''
     sentimentScores = []
 
     for row in responsesArr[1:] : 
@@ -50,6 +61,11 @@ def getAllSentimentScores (responsesArr) :
 # calculating the perplexity score
 
 def getPerplexity(response):
+    '''
+    Calculates the perplexity score for a given response using the perplexity model.
+    input: a single response
+    output: the perplexity score for the response
+    '''
     text = str(response).strip()
     if not text:
         return float("nan")
@@ -66,6 +82,11 @@ def getPerplexity(response):
 
 
 def getAllPerplexities(responsesArr) :
+    '''
+    Calculates the perplexity scores for all responses in the responses array.
+    input: an array of responses
+    output: an array of perplexity scores for each response
+    '''
     perplexities = []
 
     for row in responsesArr[1:] : 
@@ -81,6 +102,11 @@ def getAllPerplexities(responsesArr) :
 
 
 def fillScoredGenerations(fileName, sentimentArr, perplexities) :
+    '''
+    Combines the sentiment scores and perplexity scores into a single CSV file.
+    input: the path to save the scored generations CSV file, an array of sentiment scores, and an array of perplexity scores
+    output: a CSV file with the prompt id, candidate id, response, sentiment score and perplexity score for each response
+    '''
     with open(fileName, "w", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
         writer.writerow(["prompt_id", "candidate_id", "response", "sentiment_score", "perplexity"])
