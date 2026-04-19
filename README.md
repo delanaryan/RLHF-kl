@@ -52,3 +52,53 @@ RLHF-KL/
 │
 └── results/
 ```
+
+# Experiment Structure
+1. **`fixed_beta_sweep.py`** 
+   - Sweeps through β values: 0.01, 0.1, 0.5, 1.0
+   - Identifies model hacking behavior (repetition, low diversity)
+   - Generates degradation curves showing reward-alignment tradeoff
+   - Outputs: `sweep_summary.csv` with comparative analysis
+
+2. **`adaptive_beta_controller.py`** 
+   - Implements threshold-based adaptive β control
+   - Monitors KL divergence after each batch
+   - Adjusts β dynamically using step function:
+     - If KL > 1.5×target: β *= 1.2 (tighten leash)
+     - If KL < 0.5×target: β *= 0.8 (loosen leash)
+   - Configurable via `AdaptiveControllerConfig`
+   - Outputs: Optimization history, statistics, trajectories
+
+## Quick Start
+
+### 1. Validation
+```bash
+cd experiments
+python test_experiments.py
+```
+Ensures all components work before running full experiments.
+
+### 2. Run Fixed-β Sweep 
+```bash
+python fixed_beta_sweep.py
+```
+Tests β values: 0.01, 0.1, 0.5, 1.0
+Identifies where model starts hacking.
+
+### 3. Run Adaptive Controller 
+```bash
+python adaptive_beta_controller.py
+```
+Demonstrates real-time β adjustment based on KL feedback.
+
+### 4. Compare Results 
+```bash
+python comparison_utils.py
+```
+Runs both experiments and generates comparison report.
+
+### 5. Visualize 
+```bash
+python visualize_results.py
+```
+Creates analysis plots.

@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     # --- Best-of-N Sampling ---
     # Uncomment to use Best-of-N sampling with RoBERTa proxy scoring
-    # generate.getAllBestOfN(promptArr, config.BEST_OF_N, config.BEST_OF_N_SELECTIONS_PATH, verbose=True)
+    generate.getAllBestOfN(promptArr, config.BEST_OF_N, config.BEST_OF_N_SELECTIONS_PATH, verbose=True)
 
     responsesArr = utils.csvToArr(config.RAW_GENERATIONS_PATH)
 

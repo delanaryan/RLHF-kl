@@ -1,0 +1,11 @@
+Metric,Value
+Initial β,0.0800
+Final β,0.0107
+Min β,0.0107
+Max β,0.0800
+Average KL Divergence,0.0000
+Final KL Divergence,0.0000
+Average Sentiment,0.0098
+Average Reward,0.0098
+Times β Increased,0
+Times β Decreased,10
