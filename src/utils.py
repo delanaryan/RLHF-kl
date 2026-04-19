@@ -12,3 +12,5 @@ def csvToArr (fileName) :
         reader = csv.reader(file)
         array = list(reader)
     return array
+
+    

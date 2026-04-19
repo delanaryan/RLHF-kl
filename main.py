@@ -19,7 +19,13 @@ if __name__ == "__main__":
     # generate.getResponsesChunk(promptArr, 1, 5, 16)
     # generate.getResponsesChunk(promptArr, 6, 10, 16)
     # generate.getResponsesChunk(promptArr, 11, 14, 16)
-    generate.getResponsesChunk(promptArr, 10, 10, 16)
+    # generate.getResponsesChunk(promptArr, 15, 20, 16)
+
+    responsesArr = utils.csvToArr(config.RAW_GENERATIONS_PATH)
+
+    sentimentArr = score.getAllSentimentScores(responsesArr)
+    perplexities = score.getAllPerplexities(responsesArr)
+    score.fillScoredGenerations(config.SCORED_GENERATIONS_PATH, sentimentArr, perplexities)
 
     # debugging
     # df = pd.read_csv(config.RAW_GENERATIONS_PATH)

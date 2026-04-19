@@ -5,7 +5,9 @@ In other words, this project explores why AI models sometimes become "delusional
 
 
 # How to run
-Run `curl -fsSL https://ollama.com/install.sh | sh` to download Ollama.
+
+## Installing Ollama
+We're using Ollama's Mistral model to generate the responses we'll be analyzing. Run `curl -fsSL https://ollama.com/install.sh | sh` to download Ollama.
 
 To run Mistral locally, we need to follow the follow the following commands :
 ```
@@ -14,6 +16,13 @@ ollama run mistral
 ```
 
 To make sure that Ollama can run using our python code, we need to do : `pip install ollama pandas`
+
+## Installing RoBERTa 
+We need RoBERTa to do the sentiment analysis of Ollama's responses! To use it locally, we need to run the following commands :
+```
+pip install transformers
+pip install torch
+```
 
 # File structure 
 ```
@@ -27,8 +36,9 @@ RLHF-KL/
 │
 ├── data/
 │   ├── prompts.csv
-│   ├── raw_generations.csv     (stores outputs before scoring)
-│   └── scored_generations.csv  (stores outputs after scoring + their scores)
+│   ├── rawGenerations.csv     (stores outputs before scoring)
+│   └── scoredGenerations.csv  (stores outputs after scoring + their scores)
+│   └── selectedGenerations.csv  (stores outputs with the highest sentiment score (per N-value))
 │
 ├── src/
 │   ├── __init__.py
