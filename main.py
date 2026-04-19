@@ -21,6 +21,10 @@ if __name__ == "__main__":
     # generate.getResponsesChunk(promptArr, 11, 14, 16)
     # generate.getResponsesChunk(promptArr, 15, 20, 16)
 
+    # --- Best-of-N Sampling ---
+    # Uncomment to use Best-of-N sampling with RoBERTa proxy scoring
+    # generate.getAllBestOfN(promptArr, config.BEST_OF_N, config.BEST_OF_N_SELECTIONS_PATH, verbose=True)
+
     responsesArr = utils.csvToArr(config.RAW_GENERATIONS_PATH)
 
     sentimentArr = score.getAllSentimentScores(responsesArr)
