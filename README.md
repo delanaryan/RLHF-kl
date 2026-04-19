@@ -96,9 +96,3 @@ Demonstrates real-time β adjustment based on KL feedback.
 python comparison_utils.py
 ```
 Runs both experiments and generates comparison report.
-
-### 5. Visualize 
-```bash
-python visualize_results.py
-```
-Creates analysis plots.
