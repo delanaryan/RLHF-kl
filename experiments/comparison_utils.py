@@ -77,8 +77,10 @@ class ResultsComparator:
         results = {}
         
         for file in results_dir.glob("beta_*.csv"):
-            # Extract β value from filename
+            # Extract β value from filename. Support names like beta_0.10_results.csv.
             beta_str = file.stem.replace("beta_", "")
+            if beta_str.endswith("_results"):
+                beta_str = beta_str[: -len("_results")]
             beta_val = float(beta_str)
             results[beta_val] = pd.read_csv(file)
         
