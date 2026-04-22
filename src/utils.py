@@ -6,9 +6,12 @@
     # make folders if missing
 
 import csv
+from pathlib import Path
 
 def csvToArr (fileName) : 
-    with open(fileName, mode='r', encoding='utf-8') as file:
+    # Convert Path to string if needed
+    filePath = str(fileName)
+    with open(filePath, mode='r', encoding='utf-8') as file:
         reader = csv.reader(file)
         array = list(reader)
     return array

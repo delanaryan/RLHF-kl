@@ -59,34 +59,6 @@ class AdaptiveKLController:
         }
         self.all_reference_responses = []
         
-    def calculate_batch_kl(self, batch_responses: List[str]) -> float:
-        """
-        Calculate average KL divergence for a batch of responses.
-        
-        KL divergence is estimated based on:
-        - Response diversity (unique word ratio)
-        - Response length consistency
-        - Similarity to reference responses
-        """
-        if not batch_responses:
-            return 0.0
-        
-        kl_estimates = []
-        
-        for response in batch_responses: # Calculates a KL estimate for each response based on heuristics
-            words = response.lower().split()
-            if len(words) > 0:
-                unique_ratio = len(set(words)) / len(words)
-            else:
-                unique_ratio = 0
-            
-            # Penalize low diversity (repetition = high KL from base)
-            response_kl = max(0, (1.0 - unique_ratio) * 2.0)
-            kl_estimates.append(response_kl)
-        
-        batch_avg_kl = sum(kl_estimates) / len(kl_estimates)
-        return batch_avg_kl
-    
     def adjust_beta(self, current_kl: float) -> Tuple[float, str]:
         """
         Threshold-based step function for β adjustment.
@@ -133,7 +105,7 @@ class AdaptiveKLController:
         Returns: Dictionary with batch results and controller state
         """
 
-        current_kl = self.calculate_batch_kl(batch_responses)
+        current_kl = score.calculate_batch_kl(batch_responses, reference_responses=self.all_reference_responses)
         new_beta, action = self.adjust_beta(current_kl) # Adjust β based on KL divergence and get the action taken
         
         # Calculate rewards using current β
@@ -185,7 +157,7 @@ class AdaptiveOptimizationExperiment:
     Full adaptive optimization experiment that uses the KL controller.
     """
     
-    def __init__(self, config: AdaptiveControllerConfig = None, output_dir: str = "experiments/results/adaptive_beta"):
+    def __init__(self, config: Optional[AdaptiveControllerConfig] = None, output_dir: str = "experiments/results/adaptive_beta"):
         self.config = config or AdaptiveControllerConfig()
         self.controller = AdaptiveKLController(config)
         self.output_dir = Path(output_dir)
