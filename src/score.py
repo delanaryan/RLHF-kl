@@ -4,6 +4,8 @@
 
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, AutoModelForCausalLM
 from scipy.special import softmax
+from collections import Counter
+from typing import List, Optional
 import torch
 import math
 import csv
@@ -99,6 +101,73 @@ def getAllPerplexities(responsesArr) :
         # print(curRow)
 
     return perplexities  # find the perplexity for each response
+
+
+def _token_counts(text: str) -> Counter:
+    """Tokenize text and return token id frequencies."""
+    if not text:
+        return Counter()
+
+    encodings = perplexity_tokenizer(text, return_tensors="pt", truncation=True, max_length=1024)
+    token_ids = encodings["input_ids"][0].tolist()
+    return Counter(token_ids)
+
+
+def _aggregate_counts(responses: List[str]) -> Counter:
+    """Aggregate token counts across multiple responses."""
+    aggregate = Counter()
+    for text in responses:
+        aggregate.update(_token_counts(text))
+    return aggregate
+
+
+def calculate_kl_divergence(response: str, reference_responses: Optional[List[str]] = None, epsilon: float = 1e-12) -> float:
+    """Compute KL(P || Q) between a response distribution and a reference distribution."""
+    if not response:
+        return 0.0
+
+    p_counts = _token_counts(response)
+    if not p_counts:
+        return 0.0
+
+    if not reference_responses:
+        return 0.0
+
+    q_counts = _aggregate_counts(reference_responses)
+    if not q_counts:
+        return 0.0
+
+    vocab = set(p_counts) | set(q_counts)
+    p_total = sum(p_counts.values())
+    q_total = sum(q_counts.values())
+    if p_total == 0 or q_total == 0:
+        return 0.0
+
+    vocab_size = len(vocab)
+    kl = 0.0
+    for token in vocab:
+        p_prob = (p_counts.get(token, 0) + epsilon) / (p_total + epsilon * vocab_size)
+        q_prob = (q_counts.get(token, 0) + epsilon) / (q_total + epsilon * vocab_size)
+        kl += p_prob * math.log(p_prob / q_prob)
+    return float(kl)
+
+
+def calculate_batch_kl(responses: List[str], reference_responses: Optional[List[str]] = None) -> float:
+    """Compute average KL divergence for a batch of responses."""
+    if not responses:
+        return 0.0
+
+    if reference_responses is None:
+        if len(responses) == 1:
+            return 0.0
+        kl_values = []
+        for idx, response in enumerate(responses):
+            other_responses = [r for j, r in enumerate(responses) if j != idx]
+            kl_values.append(calculate_kl_divergence(response, other_responses))
+        return sum(kl_values) / len(kl_values)
+
+    kl_values = [calculate_kl_divergence(response, reference_responses) for response in responses]
+    return sum(kl_values) / len(kl_values)
 
 
 def fillScoredGenerations(fileName, sentimentArr, perplexities) :

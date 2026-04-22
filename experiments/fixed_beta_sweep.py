@@ -35,23 +35,6 @@ class FixedBetaSweepExperiment:
         self.beta_values = [0.01, 0.1, 0.5, 1.0]
         self.results = {}
         
-    def calculate_kl_divergence(self, response: str, reference_responses: List[str]) -> float:
-        """
-        Estimate KL divergence between response probability and reference distribution.
-        Uses a simple heuristic based on response uniqueness.
-        """
-
-        response_length = len(response.split())
-        
-        words = response.lower().split()
-        if len(words) > 0:
-            unique_ratio = len(set(words)) / len(words)
-        else:
-            unique_ratio = 0
-            
-        kl_estimate = max(0, (1.0 - unique_ratio) * 2.0) # KL penalizes low diversity, scaled to [0, 2]
-        return kl_estimate
-    
     def compute_rlhf_reward(self, sentiment_score: float, kl_divergence: float, beta: float) -> float:
         """
         Compute RLHF reward with KL penalty.
@@ -108,7 +91,7 @@ class FixedBetaSweepExperiment:
             for gen_idx in range(num_generations): # generate multiple responses per prompt to observe trends
                 response = generate.generateSingleResponse(prompt_text)
                 sentiment = score.getSentimentScore(response)
-                kl_div = self.calculate_kl_divergence(response, all_responses)
+                kl_div = score.calculate_kl_divergence(response, all_responses)
                 reward = self.compute_rlhf_reward(sentiment, kl_div, beta)
                 
                 prompt_results['generations'].append(response)
