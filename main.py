@@ -23,15 +23,15 @@ if __name__ == "__main__":
     # --- Best-of-N Sampling ---
     # Uncomment to use Best-of-N sampling with RoBERTa proxy scoring
     # for the factual prompts
-    generate.getAllBestOfN(promptArr, config.BEST_OF_N, config.BEST_OF_N_SELECTIONS_PATH, verbose=True)
-    responsesArr = utils.csvToArr(config.RAW_GENERATIONS_PATH)
-    sentimentArr = score.getAllSentimentScores(responsesArr)
-    perplexities = score.getAllPerplexities(responsesArr)
-    score.fillScoredGenerations(config.SCORED_GENERATIONS_PATH, sentimentArr, perplexities)
+    # generate.getAllBestOfN(promptArr, config.BEST_OF_N, config.BEST_OF_N_SELECTIONS_PATH, verbose=True)
+    # responsesArr = utils.csvToArr(config.RAW_GENERATIONS_PATH)
+    # sentimentArr = score.getAllSentimentScores(responsesArr)
+    # perplexities = score.getAllPerplexities(responsesArr)
+    # score.fillScoredGenerations(config.SCORED_GENERATIONS_PATH, sentimentArr, perplexities)
 
     # for the alternate prompts 
-    # generate.getAllBestOfN(alternatePromptArr, config.BEST_OF_N, config.ALTERNATE_BEST_OF_N_SELECTIONS_PATH, verbose=True)
-    # alternate_responsesArr = utils.csvToArr(config.ALTERNATE_RAW_GENERATIONS_PATH)
-    # alternate_sentimentArr = score.getAllSentimentScores(alternate_responsesArr)
-    # alternate_perplexities = score.getAllPerplexities(alternate_responsesArr)
-    # score.fillScoredGenerations(config.ALTERNATE_SCORED_GENERATIONS_PATH, alternate_sentimentArr, alternate_perplexities)
+    generate.getAllBestOfN(alternatePromptArr, config.BEST_OF_N, config.ALTERNATE_BEST_OF_N_SELECTIONS_PATH, verbose=True)
+    alternate_responsesArr = utils.csvToArr(config.ALTERNATE_RAW_GENERATIONS_PATH)
+    alternate_sentimentArr = score.getAllSentimentScores(alternate_responsesArr)
+    alternate_perplexities = score.getAllPerplexities(alternate_responsesArr)
+    score.fillScoredGenerations(config.ALTERNATE_SCORED_GENERATIONS_PATH, alternate_sentimentArr, alternate_perplexities)
