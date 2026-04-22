@@ -21,3 +21,8 @@ PROMPT_PATH = PROJECT_ROOT / 'data' / 'prompts.csv'
 RAW_GENERATIONS_PATH = PROJECT_ROOT / 'data' / 'rawGenerations.csv'
 SCORED_GENERATIONS_PATH = PROJECT_ROOT / 'data' / 'scoredGenerations.csv'
 BEST_OF_N_SELECTIONS_PATH = PROJECT_ROOT / 'data' / 'bestOfNSelections.csv'
+
+ALTERNATE_PROMPT_PATH = PROJECT_ROOT / 'data' / 'alternate_prompts.csv'
+ALTERNATE_RAW_GENERATIONS_PATH = PROJECT_ROOT / 'data' / 'alternate_rawGenerations.csv'
+ALTERNATE_SCORED_GENERATIONS_PATH = PROJECT_ROOT / 'data' / 'alternate_scoredGenerations.csv'
+ALTERNATE_BEST_OF_N_SELECTIONS_PATH = PROJECT_ROOT / 'data' / 'alternate_bestOfNSelections.csv'

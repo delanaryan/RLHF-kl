@@ -1,0 +1,321 @@
+prompt_id,candidate_id,response,sentiment_score,perplexity
+1,1," The meaning of life may vary among individuals, but generally, it's about personal growth, relationships, pursuing passions, seeking happiness, and making a positive impact on the world.",0.8723294734954834,17.341937794649482
+1,2," The meaning of life may vary among individuals, but generally, it's about pursuing personal growth, happiness, and contributing positively to society.",0.7917444109916687,21.47136629503727
+1,3," The meaning of life is subjective, often associated with personal growth, relationships, and contributing positively to one's self, others, and society.",0.6341599225997925,26.04622680473917
+1,4," The meaning of life may vary for each individual, but often it's about personal growth, relationships, pursuit of happiness, and making a positive impact on the world.",0.8791366219520569,14.864120526844637
+1,5," The meaning of life may vary among individuals, but it often revolves around personal growth, relationships, pursuit of happiness, and contributing to something greater than oneself.",0.8013419508934021,17.630117138710535
+1,6," The meaning of life may vary for each individual, but generally, it's about pursuing personal growth, finding happiness, creating meaningful relationships, and making a positive impact on the world.",0.9109959006309509,13.868099832693423
+1,7," The meaning of life may vary, but it often involves personal growth, relationships, pursuit of happiness, and contributing positively to the world around us.",0.8870849609375,19.689351998937187
+1,8," The meaning of life is a deeply personal and philosophical concept, often explored through various perspectives such as religion, science, or personal experience. It may involve seeking happiness, knowledge, purpose, or connecting with others.",0.6910759806632996,25.157212247260816
+1,9," The meaning of life may be subjective, but it often refers to discovering purpose, pursuing happiness, and contributing positively to one's self and others.",0.840682327747345,31.412840711924165
+1,10," The meaning of life may be subjective, but it often refers to finding purpose, personal growth, and contributing positively to one's self, others, and society.",0.7607734799385071,24.934403394124406
+1,11," The meaning of life varies for each individual, but it often involves personal growth, relationships, and pursuing happiness and purpose.",0.7834712862968445,31.82247787873584
+1,12," The meaning of life can be subjective, but many people believe it involves pursuing personal growth, happiness, and contributing positively to the world around them.",0.8213459253311157,24.17883669011107
+1,13," The meaning of life may vary among individuals, but it often involves personal growth, relationships, and contributing to something greater than oneself.",0.7213250398635864,21.5462672703728
+1,14," The meaning of life is subjective, but many believe it's about personal growth, relationships, and contributing positively to the world.",0.7361365556716919,24.196148465704628
+1,15," The meaning of life may vary for each individual, but generally, it's about personal growth, relationships, and pursuing happiness and purpose in our experiences.",0.7467862367630005,29.039427904875588
+1,16," The meaning of life, often pondered, can vary among individuals. Generally, it's about personal growth, relationships, pursuing passions, and contributing positively to society while seeking happiness and purpose.",0.7269362807273865,37.72005074147825
+2,1," A stray dog, once lonely, found warmth and love in a kind family's home, transforming from a scrawny wanderer to a cherished companion.",0.8976723551750183,56.940451759635145
+2,2," A stray dog, once lost and afraid, finds warmth in a kind stranger's heart, transforming from lonely to cherished companion.",0.7600016593933105,89.28595326505246
+2,3," A stray dog, once lonely, finds warmth and love in a kind family, learning to trust again and becoming their cherished companion.",0.9306208491325378,91.19312472454502
+2,4," A stray dog, named Max, finds a loving home after a kind stranger feeds and befriends him, restoring his faith in humanity.",0.9227637648582458,60.72628574773972
+2,5," A stray dog, abandoned and cold, found comfort in a little girl's warmth. Together, they discovered friendship and love could conquer loneliness.",0.8837097883224487,66.52532629571044
+2,6," A stray dog, once forgotten, finds a loving home, bringing warmth and joy to its new family.",0.9508140087127686,61.97581760459706
+2,7," A stray dog finds a warm home, wagging its tail with gratitude, filling days with joyful play and nights with comforting presence.",0.9633772373199463,134.63897682719576
+2,8," A stray dog finds comfort in an old, abandoned house, discovering warmth and companionship from a hidden family of mice.",0.7604978680610657,82.17108391483028
+2,9," A stray dog, once lost and scared, found warmth and love in a kind stranger's home, transforming from a frightened companion into a cherished family member.",0.8660814166069031,49.51678989745756
+2,10," A stray dog, once lost, finds home in a kind-hearted family, learning love and security, becoming cherished companion.",0.9077235460281372,91.31796647158481
+2,11," A stray dog, named Shadow, found an abandoned kitten and together they learned to trust humans again, forming an unbreakable bond.",0.8841216564178467,51.70656592930562
+2,12," A stray dog, named Max, found shelter in a kind stranger's home, bringing warmth and love into an empty life.",0.892669677734375,58.71186580067073
+2,13," A stray dog finds comfort in an old man's companionship, teaching him the true meaning of unconditional love and friendship.",0.9026012420654297,43.46989975554295
+2,14," A stray dog finds solace in a kind old man's company, forming an unbreakable bond of friendship and companionship.",0.9419209957122803,35.38464541848245
+2,15," A stray dog finds an abandoned kitten, nursing it back to health, forming an unbreakable bond of friendship and love.",0.915809690952301,38.64326306727262
+2,16," A stray dog finds a cozy home, becoming a beloved companion who brings joy and comfort to his new family.",0.975797712802887,43.29758777308681
+3,1," People have pets for companionship, love, and as a source of emotional support. They also serve as a reminder of our connection to nature and the natural world.",0.8408235907554626,18.131023791542674
+3,2," People have pets for companionship, emotional support, and to share love and joy in their daily lives. They also provide opportunities for exercise, responsibility, and a connection with nature.",0.897422194480896,24.96516304165551
+3,3," People keep pets for companionship, emotional support, and to share love, while also teaching responsibility and promoting physical activity.",0.7767337560653687,65.99440397035647
+3,4," People have pets for companionship, emotional support, and to share love and affection. They also help with stress relief and can provide a sense of responsibility.",0.8785924315452576,27.509635719052998
+3,5," People have pets for companionship, love, emotional support, and as a means to develop responsibilities.",0.46332672238349915,48.9928222814852
+3,6," People have pets for companionship, love, and emotional support. They also provide a sense of responsibility, exercise motivation, and can reduce stress levels.",0.8731516599655151,33.15401154031
+3,7," People have pets for companionship, love, and emotional support. They also provide a sense of purpose and help with stress relief and physical exercise.",0.8690410256385803,26.974637682961706
+3,8," People have pets for companionship, emotional support, and they help with stress reduction, increasing overall well-being.",0.9066606163978577,43.33295831416603
+3,9," People keep pets for companionship, love, and emotional support, as well as to provide a sense of security and reduce feelings of loneliness. They can also help teach responsibility and empathy.",0.8363991379737854,27.583304334902696
+3,10," People have pets for companionship, emotional support, and to share their lives with another living being, often forming deep bonds.",0.6911818981170654,47.151188823621155
+3,11," People have pets for companionship, emotional support, and to share their lives, often forming deep bonds of love and friendship.",0.8493521809577942,34.47978074699152
+3,12," People keep pets for companionship, emotional support, entertainment, and sometimes even as protection. They provide unconditional love and help improve mental and physical health.",0.9256545305252075,40.73376991449343
+3,13," People have pets for companionship, emotional support, stress reduction, and to develop a sense of responsibility. They also offer unconditional love and can provide entertainment.",0.8856061100959778,38.25680456788761
+3,14," People have pets for companionship, love, emotional support, stress relief, and teaching children about responsibility.",0.5812188386917114,46.15311670006798
+3,15," People keep pets for companionship, emotional support, and to share their lives with loving and often trainable creatures.",0.8070064783096313,65.94835004006751
+3,16," People have pets for companionship, love, emotional support, and sometimes as a source of entertainment. They also help reduce stress and can promote physical activity.",0.8992831110954285,31.253676052526085
+4,1," Taking breaks, practicing mindfulness, exercising regularly, getting enough sleep, and talking about feelings can help relieve stress.",0.7449742555618286,33.804256585754956
+4,2," Engaging in regular exercise, practicing mindfulness, and getting enough sleep can help manage stress effectively.",0.7133997082710266,37.83125289472714
+4,3," Engaging in regular physical activity, practicing mindfulness, and maintaining a balanced lifestyle can help reduce stress levels effectively.",0.7637448906898499,27.873283985850435
+4,4," Regular exercise, deep breathing, meditation, adequate sleep, and a balanced diet can help effectively manage stress levels.",0.6878951787948608,24.959360361389756
+4,5," Engage in regular physical exercise, practice mindfulness, and prioritize quality sleep for effective stress relief.",0.5109236836433411,94.38078767472031
+4,6," Regular exercise, deep breathing, adequate sleep, and mindfulness practices can help effectively manage stress.",0.7394388914108276,36.98894440559058
+4,7," Taking breaks, practicing mindfulness, exercising regularly, and seeking social support can help manage stress effectively.",0.7002705931663513,48.16807673104241
+4,8," Regular exercise, deep breathing, mindfulness, adequate sleep, and maintaining a positive outlook can help manage stress effectively.",0.8114333748817444,34.073505151863955
+4,9," Taking breaks, practicing mindfulness, exercising regularly, getting enough sleep, and maintaining social connections can help manage stress effectively.",0.7237144112586975,39.032499400739894
+4,10," Taking breaks, practicing mindfulness, exercising regularly, and getting enough sleep can help manage and relieve stress effectively.",0.7541540861129761,42.587749797551645
+4,11," Regular exercise, deep breathing, adequate sleep, and mindfulness practices can help reduce stress levels effectively.",0.7778246402740479,37.66796237896163
+4,12," Engage in activities that promote relaxation, such as meditation, exercise, or hobbies you enjoy. Remember, it's essential to take breaks and prioritize self-care.",0.8232044577598572,34.40114988175333
+4,13," Engaging in activities you enjoy, such as exercise, meditation, or hobbies, can help reduce stress levels.",0.9008221626281738,21.124034388614106
+4,14," Engage in activities that promote relaxation, such as meditation, exercise, or reading, and ensure you have adequate rest and nutrition.",0.7827915549278259,24.987720003205332
+4,15," Engage in regular physical activity, practice deep breathing exercises, and ensure adequate sleep for effective stress relief.",0.36527737975120544,55.69706773649478
+4,16," Engage in regular physical activity, practice deep breathing exercises, and ensure adequate sleep for effective stress relief.",0.36527737975120544,55.69706773649478
+5,1," A good friend is supportive, trustworthy, respectful, and honest, sharing joys and sorrows with kindness and understanding.",0.9326372742652893,36.61941435119183
+5,2," A good friend is someone who respects, understands, supports, and cares for you genuinely, fostering trust, honesty, and shared enjoyment.",0.9239400625228882,43.86889012706222
+5,3," A good friend is one who listens, supports, respects, and shares genuine affection, fostering mutual growth and happiness.",0.9421384930610657,61.017211907187175
+5,4," A good friend is someone who supports, listens, respects, and encourages you, sharing life's ups and downs with kindness and honesty.",0.8775286674499512,33.7242152629096
+5,5," A good friend is one who listens, supports, respects, shares experiences, encourages growth, and brings positivity into your life.",0.9450197815895081,34.86892964745912
+5,6," A good friend is someone who listens, supports, respects, and shares laughter with you, creating a bond of trust and mutual understanding.",0.9238049387931824,29.819678945454136
+5,7," A good friend is someone who listens, understands, supports, shares experiences, encourages growth, and respects your individuality.",0.8933342695236206,39.313066699858354
+5,8," A good friend is someone who supports you, listens to you, respects your feelings, and encourages your personal growth.",0.8861451745033264,17.807238908081512
+5,9," A good friend is supportive, trustworthy, honest, and understands you, fostering mutual respect and shared experiences.",0.921949565410614,73.213007839847
+5,10," A good friend is someone who respects you, listens to you, supports you, and shares common values and interests, building trust and fostering mutual growth.",0.9151480197906494,27.39202605688029
+5,11," A good friend is someone who listens, supports, respects you, shares common interests, and encourages personal growth.",0.9142072796821594,31.099054589213722
+5,12," A good friend is someone who listens, supports, respects, shares joy and hardships, encourages growth, and fosters trust and mutual respect.",0.9128407835960388,39.26946911082578
+5,13," A good friend offers trust, support, understanding, kindness, and shared interests, fostering mutual respect and joy in each other's company.",0.9595974683761597,44.76877056996615
+5,14," A good friend is someone who listens, supports, respects, and shares joy and sorrow with you, promoting trust, understanding, and mutual growth.",0.9006969928741455,35.02918843526616
+5,15," A good friend is someone who supports, listens, respects, and shares joy and struggles with you.",0.8769477009773254,37.6819120537655
+5,16," A good friend is someone who supports, understands, respects, and shares happiness and challenges with you, promoting trust and mutual growth.",0.9229993224143982,57.13821165753786
+6,1," Happiness means experiencing joy, contentment, and satisfaction in life, often due to fulfilling relationships, personal achievements, or a sense of purpose.",0.9674028158187866,27.93885247489844
+6,2," Happiness is an emotional state of wellbeing, joy, contentment, and satisfaction with life.",0.9559674859046936,26.650243572541253
+6,3," Happiness is the state of feeling content, joyful, and satisfied with one's life and experiences.",0.9699136018753052,24.871011216942804
+6,4," Happiness is a state of well-being, contentment, and joy experienced when one's needs are met, personal goals are achieved, and they feel satisfied with life.",0.9646027684211731,23.918816514738083
+6,5," Happiness is a deeply personal, subjective experience of contentment, joy, and satisfaction in life's moments.",0.9393435120582581,29.39172653628894
+6,6," Happiness is the deep sense of joy, contentment, and fulfillment one feels due to satisfying personal or social needs.",0.9432554244995117,35.78863983008236
+6,7," Happiness means experiencing contentment, joy, and a sense of well-being in one's life.",0.965670645236969,15.290638843560043
+6,8," Happiness is an emotional state of well-being, joy, contentment, and satisfaction with life's experiences.",0.9508069157600403,21.71535510832572
+6,9," Happiness is a deeply personal, subjective feeling of contentment, joy, and well-being, often derived from positive experiences, relationships, or achievements.",0.9545779824256897,20.409656335942895
+6,10," Happiness is a subjective sense of well-being, often characterized by joy, contentment, and satisfaction with one's life.",0.932417094707489,12.924974204858088
+6,11," Happiness is an emotional state of wellbeing, typically marked by feelings of joy, contentment, and satisfaction with life.",0.9487341642379761,18.467871612283805
+6,12," Happiness is a positive, fulfilling emotional state characterized by contentment, joy, and a sense of well-being.",0.9699057340621948,13.937555753789836
+6,13," Happiness is a positive emotional state characterized by feelings of joy, contentment, and wellbeing.",0.96562260389328,19.518390177370396
+6,14," Happiness is a positive emotional state characterized by feelings of joy, contentment, and satisfaction with life.",0.9682769179344177,14.887993550458974
+6,15," Happiness is a state of well-being deriving from positive emotions, good relationships, and a sense of purpose in life.",0.9706008434295654,17.38271600330083
+6,16," Happiness is a feeling of contentment and joy, resulting from positive experiences and fulfilling one's personal goals or values.",0.971146821975708,28.604710725591527
+7,1," People fall in love because it fulfills emotional needs, such as belongingness and self-esteem, and occurs when someone triggers positive feelings of attraction, intimacy, and commitment.",0.8284043669700623,32.56695302328984
+7,2," People fall in love due to feelings of deep affection, emotional connection, and attraction towards another person, often triggered by shared interests, values, and chemistry.",0.8041800260543823,31.617108954356226
+7,3," People fall in love because they connect emotionally and physically with someone, experiencing feelings of affection, attraction, and commitment.",0.8354306221008301,28.999098625369992
+7,4," People fall in love when they feel a deep emotional connection with someone, often characterized by mutual respect, shared interests, physical attraction, and feelings of affection and caring.",0.8950474858283997,22.913467415416186
+7,5," People fall in love when they feel strong emotional connections and positive feelings towards another person, often involving shared values, mutual respect, physical attraction, and a sense of companionship.",0.8969642519950867,27.686799667971698
+7,6," People fall in love because of mutual emotional connections and attraction, often involving shared interests, values, and feelings of affection.",0.8947137594223022,48.50864359799833
+7,7," People fall in love because they find someone who triggers strong emotional responses, shares common interests, and offers a sense of comfort, understanding, and companionship.",0.932653546333313,27.635840329026006
+7,8," People fall in love when they find someone who they deeply connect with, share similar values, and experience strong feelings of attraction and emotional bonding towards.",0.9635197520256042,41.1072839698998
+7,9," People fall in love when they find someone who meets their emotional needs, triggers positive feelings, and shares similar values or life goals.",0.9102091789245605,35.73592967737898
+7,10," People fall in love because they find emotional, intellectual, or physical compatibility with another person that fulfills their needs and desires for companionship and connection.",0.8132271766662598,22.72855220758048
+7,11," People fall in love because of mutual attraction, emotional connection, and shared interests, which often lead to feelings of happiness, admiration, and passion.",0.9580379128456116,22.344794159974665
+7,12," People fall in love when they experience deep emotional connections, mutual attraction, and shared interests or values with another person.",0.9257844686508179,34.74957935749709
+7,13," People fall in love because they find deep emotional connections, shared values, and strong attractions that make them cherish the other person's presence.",0.9581711292266846,37.58202504988791
+7,14," People fall in love when they feel a deep connection, mutual attraction, and emotional bond with another person, often accompanied by feelings of excitement, affection, and a strong desire to spend time together.",0.9554424285888672,17.039514844662403
+7,15," People fall in love because they find someone who triggers feelings of deep affection, attraction, and emotional connection, often due to shared values, experiences, or mutual understanding.",0.8949711322784424,30.347987845754442
+7,16," People fall in love when they find someone who shares common values, offers them happiness, and triggers feelings of attraction and deep connection.",0.9516168236732483,34.01431007309438
+8,1," A home feels comforting when it reflects personal taste, offers a sense of security, and fosters a welcoming atmosphere filled with loved ones' memories.",0.9565415382385254,67.66067878646244
+8,2," A comfortable home provides warmth, personal touches, and a sense of familiarity that embraces its inhabitants, fostering relaxation and wellbeing.",0.9321357011795044,73.41769548535764
+8,3," A home feels comforting when it reflects one's personal taste, provides a sense of security, and fosters a warm and inviting atmosphere.",0.9533763527870178,44.81890099523289
+8,4," A comfortable home is one that provides a sense of safety, warmth, personal expression, and peaceful surroundings that resonate with the inhabitants' needs and preferences.",0.8596376180648804,28.341454111334983
+8,5," A home feels comforting when it reflects personal style, provides a sense of safety, and offers a welcoming atmosphere filled with love and warmth.",0.9710150957107544,54.479432132398195
+8,6," A home feels comforting when it reflects personal taste, provides safety and privacy, and offers a sense of belonging and familiarity.",0.8990474343299866,75.72857681430628
+8,7," A home feels comforting when it reflects personal taste, provides a sense of security, and fosters warmth through familiar belongings and welcoming atmosphere.",0.9557440876960754,115.72254015682857
+8,8," A home feels comforting when it reflects personal tastes, provides a sense of security, and fosters a warm and welcoming atmosphere.",0.9541468024253845,51.87893644572797
+8,9," A home feels comforting when it reflects personal style, provides a sense of security, and offers a space for relaxation, memories, and connections with loved ones.",0.9442091584205627,42.32446896093758
+8,10," A home feels comforting when it reflects personal style, offers a sense of familiarity, and provides a space for relaxation and connection with loved ones.",0.9369202852249146,49.266811139764556
+8,11," A home feels comforting when it reflects personal tastes, offers a sense of safety, and provides a space for relaxation and connection with loved ones.",0.9350743293762207,46.442970835664795
+8,12," A home feels comforting when it reflects personal tastes, is well-maintained, and offers a sense of familiarity, safety, and peace.",0.9275667071342468,42.06629580042229
+8,13," A comfortable home is one that provides a welcoming, personalized atmosphere with warm lighting, cozy furnishings, and familiar objects that reflect the occupant's personality.",0.9417088627815247,38.42591821243103
+8,14," A home feels comforting when it reflects personal style, provides safety, offers familiarity, and fosters positive memories and relationships.",0.9507465362548828,130.1024081838136
+8,15," A home feels comforting when it reflects personal taste, offers a sense of security, and provides a welcoming atmosphere filled with warmth and familiarity.",0.9508906602859497,64.23333521066769
+8,16," A home feels comforting with personal touches, cozy furniture, and a calm environment that reflects the inhabitant's personality.",0.9469245672225952,72.87529515553857
+9,1," People enjoy music because it evokes emotions, provides a shared cultural experience, and can stimulate memories, making it a universal form of expression and connection.",0.9549766182899475,33.9506441521111
+9,2," People enjoy music because it evokes emotions, connects us culturally, provides relaxation, and can inspire feelings of joy or comfort.",0.9551241397857666,52.20669199083723
+9,3," People enjoy music due to its emotional impact, ability to evoke memories, cultural significance, and the shared experience it provides.",0.9528433680534363,39.673345320991665
+9,4," People enjoy music because it evokes emotions, provides a shared experience, and can help express feelings, creating a unique connection between listeners and artists.",0.9534311890602112,33.339287852865645
+9,5," People enjoy music because it stimulates emotions, triggers memories, encourages social bonding, and provides a form of personal expression.",0.9227153062820435,30.603939724802153
+9,6," People enjoy music as it provides emotional expression, cultural connection, mental stimulation, physical rhythm, and overall joy and relaxation.",0.9527156352996826,59.01413012492618
+9,7," People enjoy music because it stimulates emotions, connects cultures, provides relaxation, expresses thoughts, and fosters social bonding.",0.9365177750587463,61.476425385662495
+9,8," People enjoy music because it stimulates emotions, connects us, expresses thoughts, provides relaxation, and offers a universal form of expression and entertainment.",0.9472108483314514,52.373324561858986
+9,9," People enjoy music because it evokes emotions, provides entertainment, promotes social bonding, and often reflects shared human experiences.",0.9554040431976318,51.63556956933952
+9,10," People enjoy music because it evokes emotions, provides comfort, fosters social connections, and can serve as a source of personal expression and cultural identity.",0.9394385814666748,24.738003015156874
+9,11," People enjoy music because it evokes emotions, stimulates memories, connects us culturally, and provides a universal language for expressing feelings.",0.9355767965316772,42.946019306474305
+9,12," People enjoy music because it can evoke emotions, create moods, provide relaxation, foster social connections, and express cultural identity.",0.9395270943641663,38.333745622868484
+9,13," People enjoy music because it provides emotional expression, enhances mood, connects cultures, and creates shared experiences.",0.9594639539718628,64.62593611251246
+9,14," People enjoy music due to its ability to evoke emotions, provide a shared cultural experience, and offer a means of personal expression.",0.9391717910766602,27.247672882837183
+9,15," People enjoy music because it stimulates emotions, helps express feelings, fosters social connections, and provides a means of personal relaxation and self-expression.",0.9312182068824768,24.042925689258748
+9,16," People enjoy music because it evokes emotions, enhances mood, provides entertainment, fosters social connection, and reflects cultural identity.",0.9390384554862976,34.518933112046476
+10,1," A good day is filled with positive experiences, achieved goals, time spent with loved ones, and a sense of personal growth.",0.9856324195861816,28.17578242114704
+10,2," A good day is one filled with positivity, accomplishment, learning, love, and relaxation.",0.9791116118431091,31.034710680670916
+10,3," A good day is filled with accomplishments, positive interactions, and a sense of peace and contentment.",0.9849531650543213,33.23259653441985
+10,4," A good day is filled with positive interactions, personal accomplishments, and enjoyable experiences that leave you feeling content and fulfilled.",0.9888443350791931,40.007269090096706
+10,5," A good day is filled with accomplishments, positive interactions, learning, and personal growth.",0.9852227568626404,48.02449792359325
+10,6," A good day is one filled with positivity, accomplishment, learning, laughter, and quality time spent with loved ones.",0.9853973984718323,27.406547801946523
+10,7," A good day is filled with moments of happiness, accomplishment, learning, and quality time spent with loved ones.",0.9894220232963562,26.865617292319985
+10,8," A good day is filled with positive interactions, personal accomplishments, and a sense of peace and happiness.",0.9856247901916504,33.939103407915155
+10,9," A good day is filled with positive interactions, personal growth, and achieving small goals that bring a sense of accomplishment.",0.9839350581169128,42.60595929286635
+10,10," A good day involves achieving personal goals, spending quality time with loved ones, and experiencing new things while feeling happy, healthy, and fulfilled.",0.9866262078285217,24.131008357682514
+10,11," A good day is filled with positive experiences, accomplishment, learning, laughter, and quality time with loved ones.",0.9893004298210144,34.24368273142457
+10,12," A good day is one filled with accomplishments, positive interactions, and personal growth, with a balance of work, rest, and fun.",0.9759271144866943,34.62389260787895
+10,13," A good day is one filled with positive interactions, personal accomplishments, and a sense of peace and contentment.",0.9790204167366028,31.914155268498966
+10,14," A good day is filled with accomplishment, laughter, learning, and connecting with loved ones in a peaceful and harmonious environment.",0.9887169599533081,34.24506253102276
+10,15," A good day involves positive interactions, accomplishing tasks, learning something new, spending quality time with loved ones, and enjoying moments of peace and relaxation.",0.9844157099723816,32.58769878576924
+10,16," A good day is filled with accomplishments, positive interactions, and personal growth, while also allowing for relaxation and enjoyment.",0.983735978603363,47.43443944934885
+11,1," People often find solace, inspiration, and a connection to something greater in nature due to its beauty, tranquility, and ability to provide a refreshing break from the stresses of modern life.",0.9573176503181458,21.876400415153
+11,2," People like nature because it offers tranquility, promotes relaxation, and provides a connection to something larger than ourselves, often inspiring creativity and fostering a sense of wellbeing.",0.9463114142417908,44.43603296230317
+11,3," People enjoy nature because it offers a refreshing break from the urban environment, promotes physical and mental wellbeing, and provides opportunities for relaxation, adventure, and learning about biodiversity.",0.9648542404174805,33.194681570098524
+11,4," People find nature appealing due to its tranquility, beauty, diverse wildlife, and the chance to disconnect from daily life's stress.",0.9585092067718506,49.0309281786911
+11,5," People find comfort, inspiration, and rejuvenation in nature because it offers tranquility, fresh air, beautiful sights, opportunities for exercise, and a connection to the world's history.",0.9676685333251953,31.69791500447442
+11,6," People find comfort, tranquility, and inspiration in nature, as it provides a refreshing break from urban life, promotes physical activity, and enhances mental well-being.",0.9517765045166016,22.888777058035462
+11,7," People like nature because it offers peace, beauty, and a connection to something larger than ourselves, providing opportunities for relaxation, recreation, and personal growth.",0.9544433355331421,29.756662449742887
+11,8," People appreciate nature because it offers tranquility, beauty, diverse wildlife, fresh air, and helps reduce stress levels.",0.961365818977356,63.91338946700443
+11,9," People find comfort and inspiration in nature because it offers peaceful, calming environments that promote mental and physical well-being.",0.9487959742546082,39.07066363964848
+11,10," People find comfort, inspiration, and rejuvenation in nature due to its beauty, tranquility, and ability to promote relaxation and stress relief.",0.9654189348220825,31.230942477737525
+11,11," People often find comfort, tranquility, and inspiration in nature because it offers a peaceful environment that can reduce stress, boost creativity, and provide opportunities for physical activity.",0.9571532607078552,24.62816143727922
+11,12," People appreciate nature because it provides tranquility, inspires creativity, offers physical activities, and helps reduce stress levels.",0.9532594680786133,65.62583848081402
+11,13," People like nature because it offers peace, beauty, fresh air, and opportunities for exploration, relaxation, and rejuvenation.",0.9593870639801025,28.74913756379723
+11,14," People appreciate nature because it offers tranquility, beauty, inspiration, and a connection to our evolutionary history. It also provides essential resources for life and promotes physical and mental well-being.",0.9604224562644958,27.329917135184335
+11,15," People appreciate nature because it offers refreshing beauty, promotes relaxation, stimulates creativity, and provides a connection to the world beyond urban life.",0.9647438526153564,59.51236016305707
+11,16," People appreciate nature because it offers a sense of tranquility, inspires creativity, and fosters a deeper connection with the world around us.",0.959717869758606,20.5898777843555
+12,1," Hope is the belief in a positive outcome, inspiring perseverance and optimism amid challenges.",0.9234517216682434,74.30763539054313
+12,2," Hope is the belief that good things can still happen, even in difficult situations.",0.9072853326797485,25.33658148592189
+12,3," Hope is the belief that positive change or success can occur, even in difficult situations.",0.886599600315094,42.42132144694192
+12,4," Hope signifies a positive expectation and desire for a desirable outcome, even in difficult situations.",0.8507483005523682,88.19164359122891
+12,5," Hope is the belief that positive outcomes are possible, even in difficult situations.",0.8938435316085815,28.294058738063054
+12,6," Hope is the belief that good or positive outcomes are possible, even during difficult times.",0.8999791741371155,45.087635663310536
+12,7," Hope is the belief that positive change, improvement, or success can happen in the future despite current difficulties.",0.9177696108818054,53.88533526656866
+12,8," Hope is the belief that good things can happen, even in difficult circumstances.",0.9144338369369507,21.632886865793857
+12,9," Hope signifies a confident expectation and desire for positive outcomes, even in difficult circumstances.",0.8607052564620972,94.16240997853606
+12,10, Hope signifies an optimistic and persistent expectation for positive change or success.,0.8874832391738892,185.03399590682562
+12,11, Hope means believing in the possibility of positive outcomes despite current circumstances.,0.8722924590110779,95.2313527488147
+12,12," Hope signifies a confident and optimistic expectation for positive outcomes, even amidst challenging circumstances.",0.9060471653938293,137.31524734376052
+12,13," Hope is the belief that positive outcomes are possible, even amidst difficulties or uncertainty.",0.8734841346740723,54.374867980572276
+12,14, Hope means an optimistic expectation for a positive outcome or improvement in the future.,0.9424684047698975,57.257508374713005
+12,15," Hope is the belief that good things can still happen despite difficult circumstances, inspiring optimism and determination.",0.9417312741279602,54.32232444999192
+12,16," Hope is the confident expectation of good things to come, even in difficult situations.",0.8915175795555115,39.21640984857719
+13,1," A kind person exhibits empathy, understanding, and respect towards others, showing consideration and care for their feelings and wellbeing.",0.8829314112663269,49.58151571838757
+13,2," A kind person values and considers the feelings, needs, and wellbeing of others.",0.6548132300376892,57.56963191228797
+13,3," Someone who is kind listens empathetically, respects others' feelings, and acts with compassion towards others.",0.7793598175048828,35.182121917657454
+13,4," Kindness is shown when one considers and respects the feelings, needs, and well-being of others.",0.7595369219779968,29.75138457922212
+13,5," Kindness is shown through empathy, consideration for others' feelings, and acts of helpfulness towards those around them.",0.869812548160553,32.26603075720318
+13,6," Kindness is shown when one actively considers and respects the feelings, needs, and wellbeing of others.",0.7859317660331726,40.01856424014232
+13,7," Kindness is shown when one considers and respects the feelings, needs, and wellbeing of others.",0.742233157157898,46.46943145023399
+13,8," Kindness is shown through empathy, understanding, and considerate actions towards others.",0.8534815311431885,48.64977243208973
+13,9," A kind person shows empathy, understanding, and consideration towards others, acting selflessly to promote harmony and wellbeing.",0.8719558715820312,62.57488397582399
+13,10," Kindness is demonstrated by understanding, empathy, and considerate actions that positively impact others.",0.897532045841217,49.92325551455042
+13,11," Being kind means showing consideration, empathy, and respect towards others, and acting with compassion and generosity.",0.7975032329559326,42.1811483688881
+13,12," A person is kind when they consider others' feelings, show empathy, and act with compassion towards others.",0.8186526894569397,40.71750608556175
+13,13," Someone is kind when they show understanding, empathy, and compassion towards others, acting selflessly to bring happiness and comfort.",0.8935726284980774,49.14264689807176
+13,14," A kind person values and respects others, demonstrating empathy, patience, and compassion in their interactions.",0.8912869095802307,51.609058743646095
+13,15," Kindness is shown through empathy, consideration for others' feelings, and acting with generosity and compassion towards them.",0.8544324636459351,37.86200443381245
+13,16," Being kind means showing empathy, respect, and concern for others, acting with consideration and compassion towards them.",0.7990646362304688,37.440406941195185
+14,1," Childhood memories are crucial as they shape our identity, influence future behavior, and provide a connection to our past.",0.4845585823059082,35.04668107143406
+14,2," Childhood memories are crucial as they shape our identity, influence our behaviors, and provide emotional anchors throughout life.",0.5502731204032898,41.11029290726938
+14,3," Childhood memories matter because they shape our personal identity, influence emotional wellbeing, and provide connections to our past.",0.4948462247848511,69.39631941824196
+14,4," Childhood memories hold the building blocks of our identities, shaping who we become as adults and influencing our future relationships and experiences.",0.22634859383106232,47.691616631749035
+14,5," Childhood memories matter because they shape our identity, influence our behavior, and provide emotional connections to our past.",0.20960302650928497,37.158619057667366
+14,6," Childhood memories matter because they shape our identities, influence our relationships, and significantly impact our emotional well-being throughout life.",0.45613598823547363,29.14092393438534
+14,7," Childhood memories matter because they shape our identity, influencing our beliefs, behaviors, and overall personality development.",0.15125958621501923,54.90302813791776
+14,8," Childhood memories shape our identity, influence our behavior, and provide a sense of personal history. They are valuable as they contribute significantly to who we become as adults.",0.7319445013999939,33.084343153378875
+14,9," Childhood memories matter because they shape our identity, influences, and form the foundation for future experiences and relationships.",0.3464313745498657,63.30573476378945
+14,10," Childhood memories are crucial as they shape our identity, influence our behavior, and help us understand personal growth throughout life.",0.6455060243606567,32.170980065407335
+14,11," Childhood memories hold the key to our identity, shaping who we become as adults and providing emotional anchors in life.",0.5575331449508667,43.289722400170284
+14,12," Childhood memories are crucial as they shape our identity, influence our emotions, and provide a foundation for personal development throughout life.",0.5753792524337769,28.5781186853565
+14,13," Childhood memories matter because they shape our identity, influence our emotions, and help us understand our personal growth throughout life.",0.5103669166564941,34.651937869673205
+14,14," Childhood memories matter because they shape our identity, influence our behavior, and contribute significantly to who we become as adults.",0.4129795432090759,27.075390909022122
+14,15," Childhood memories matter because they shape our personal identity, influence relationships, and contribute to overall emotional well-being as adults.",0.6006448864936829,32.22756651749754
+14,16," Childhood memories matter because they shape our identity, influence our emotions, and help us understand the trajectory of our personal growth.",0.4304165244102478,28.98856371940691
+15,1," A peaceful place encourages tranquility and relaxation, offering minimal noise, stress, or conflict, with an environment that promotes harmony and serenity.",0.8888890743255615,57.168435043405275
+15,2," A peaceful place has low noise levels, calm atmosphere, minimal chaos or conflict, and respectful interactions among its inhabitants.",0.8297961354255676,103.85169650110807
+15,3," A peaceful place has minimal noise, low population density, natural surroundings, clean air, and a sense of safety, promoting tranquility and relaxation.",0.8793057799339294,54.31663906036142
+15,4," A peaceful place offers tranquility, minimal noise pollution, natural beauty, respect for others, and a sense of safety and security.",0.9096141457557678,34.43283189441509
+15,5," A peaceful place provides a calm and tranquil environment, free from noise, chaos, or conflict, where one can relax and feel safe.",0.887621283531189,33.26153698152831
+15,6," A peaceful place is one that promotes tranquility, safety, and harmony through low noise levels, beautiful surroundings, respect for others, and a sense of calm.",0.9369190335273743,28.23415182576276
+15,7," A peaceful place typically offers tranquility, low noise levels, minimal chaos, respect for others, and a harmonious environment that promotes relaxation.",0.9081182479858398,58.03095094987133
+15,8," A peaceful place is one that encourages tranquility, offers minimal disturbances, and allows for relaxation, often with a calm environment and considerate community.",0.8712033629417419,66.64807567826115
+15,9," A peaceful place has minimal noise, low population density, and a calm, relaxed atmosphere that promotes tranquility and wellbeing.",0.891103982925415,58.268384819372294
+15,10," A peaceful place offers tranquility, minimal noise, clean surroundings, respectful behavior, and a harmonious environment.",0.9130547046661377,67.76138234319248
+15,11," A peaceful place fosters harmony, tranquility, and safety through respect for all beings, minimal noise and chaos, clean environment, and a sense of community.",0.900950014591217,44.99713863000058
+15,12," A peaceful place is one where there's minimal noise, violence, and conflict, fostering an environment of tranquility, harmony, and safety.",0.640095055103302,31.73225161413361
+15,13," A peaceful place provides tranquility, offers low noise levels, has a clean environment, encourages relaxation, and fosters a sense of safety and respect.",0.9058101177215576,38.52061755159996
+15,14," A peaceful place is one where there's little noise, stress, or conflict, allowing for tranquility and relaxation.",0.7670499682426453,45.29102644077199
+15,15," A peaceful place offers tranquility, free from noise, chaos, and conflict, allowing individuals to feel relaxed and content.",0.8963792324066162,57.91305272284082
+15,16," A place is peaceful when it's free from noise, chaos, and conflict, offering tranquility, calmness, and a sense of harmony.",0.8422885537147522,28.958846067199616
+16,1," People often find joy in helping others because it fosters a sense of connection, purpose, and personal fulfillment.",0.9598811864852905,20.45002108258704
+16,2," People often find fulfillment in helping others because it fosters a sense of purpose, builds relationships, and contributes to the betterment of society.",0.941737949848175,18.566127096547532
+16,3," People often find fulfillment in helping others because it provides opportunities for empathy, connection, and personal growth while making a positive impact on someone's life.",0.9608545303344727,24.787808609365104
+16,4," People enjoy helping others because it fosters a sense of purpose, connects us to our community, and provides personal satisfaction.",0.9646145105361938,21.06118864088228
+16,5," People find joy in helping others because it often provides a sense of purpose, fosters connections, and contributes to the betterment of their community.",0.9696583151817322,19.178465136137362
+16,6," People enjoy helping others because it creates a sense of fulfillment, strengthens social connections, and contributes to the wellbeing of others and their communities.",0.9628469944000244,18.065234123376943
+16,7," People often find joy in helping others because it fosters a sense of community, promotes empathy, and enhances personal wellbeing.",0.9625389575958252,21.333958773521438
+16,8," People enjoy helping others because it provides a sense of purpose, connection, and personal fulfillment, and it can positively impact the wellbeing of both the helper and the recipient.",0.9398802518844604,19.440570891563112
+16,9," People enjoy helping others because it fulfills their need to contribute, connect, and experience empathy, leading to feelings of satisfaction and personal growth.",0.9550320506095886,37.2152554171574
+16,10," People often find joy and fulfillment in helping others because it fosters a sense of empathy, strengthens relationships, and contributes to the wellbeing of the community.",0.9633330702781677,16.888194992911398
+16,11," People enjoy helping others because it makes them feel good, fosters a sense of community, and can positively impact both the helper and the helped.",0.965465784072876,25.202886037560795
+16,12," People enjoy helping others because it fosters a sense of purpose, strengthens relationships, and brings personal fulfillment.",0.965230405330658,24.902411052971587
+16,13," People often find joy in helping others because it allows them to make a positive impact, foster connections, and experience feelings of empathy, altruism, and self-fulfillment.",0.9616639614105225,19.085831195936898
+16,14," People find joy in helping others because it provides a sense of purpose, fosters social connections, and promotes personal fulfillment.",0.9631739854812622,20.79495000146931
+16,15," People often find satisfaction and connection in helping others because it allows them to make a positive impact, contribute to the wellbeing of others, and foster social bonds.",0.959678053855896,23.76051137511868
+16,16," People enjoy helping others because it makes them feel valued, connected, and contributes to their sense of purpose, improving their overall well-being.",0.9666143655776978,18.825209012121835
+17,1," A family is strong when it communicates openly, shows mutual respect, supports each other's growth, and shares joy and hardships together.",0.9414464831352234,41.13112628177425
+17,2," A strong family is built on mutual respect, open communication, shared values, love, and support for each other's growth and well-being.",0.9457157254219055,18.24817169150338
+17,3," A strong family fosters open communication, mutual respect, shared responsibilities, emotional support, and love among its members.",0.9238724708557129,41.8856843035593
+17,4," A family is strong when it communicates openly, shows empathy, shares responsibilities, and supports each other through challenges.",0.9161989688873291,54.45806956688098
+17,5," A strong family is built on mutual respect, open communication, shared values, love, and the ability to support and learn from each other.",0.9358212351799011,17.28941247321377
+17,6," A family is strong when its members communicate openly, respect each other's differences, and support one another through challenges.",0.8935858011245728,28.47008328150193
+17,7," A strong family shares love, respects individuality, communicates openly, supports each other through challenges, and works together to achieve shared goals.",0.9180793166160583,72.96329961075936
+17,8," A strong family is built on mutual respect, open communication, shared values, support, and love among its members.",0.9345948100090027,28.17063047000484
+17,9," A family is strong when its members communicate openly, show love and respect towards each other, and support one another's growth and wellbeing.",0.9441598057746887,23.80943884744653
+17,10," A strong family is built on mutual respect, open communication, shared values, and love, with each member supporting one another through thick and thin.",0.9421589374542236,23.158223828471495
+17,11," A strong family is built on mutual respect, open communication, shared values, support, and love that enables growth and overcomes challenges together.",0.9420865178108215,40.18626675831389
+17,12," A strong family is built on mutual respect, open communication, shared values, love, and support for each other's personal growth.",0.9375564455986023,22.23002840973766
+17,13," A family is strong when it fosters open communication, mutual respect, shared values, love, and support among its members.",0.9464852809906006,27.662696539435384
+17,14," A strong family is built on mutual respect, open communication, shared values, and love, while supporting each other's growth and individuality.",0.9217337965965271,23.940382400240676
+17,15," A strong family is built on mutual respect, open communication, shared values, love, and the ability to support and learn from each other's differences.",0.9153661727905273,18.94997742238862
+17,16," A strong family has open communication, mutual respect, shared values, and unconditional love, fostering trust, resilience, and growth.",0.9375132322311401,42.34164722552832
+18,1," Success in life is achieving personal fulfillment, growth, and happiness while positively impacting those around you.",0.9530472755432129,36.85504380211193
+18,2," Success in life is achieving personal happiness and fulfillment, while making positive contributions to others and society.",0.9451656341552734,31.461319552275132
+18,3," Success in life is finding personal fulfillment and happiness through achieving one's goals, building meaningful relationships, and making a positive impact on others.",0.963509202003479,17.259437718331565
+18,4," Success in life is achieving personal fulfillment and happiness, often through meaningful work, strong relationships, and personal growth.",0.9471230506896973,29.012514740167912
+18,5," Success in life is achieving personal fulfillment and happiness through the pursuit of goals, relationships, learning, and making a positive impact on others.",0.9610190987586975,19.423012201265543
+18,6," Success in life is the fulfillment of personal goals, growth, and happiness through meaningful contributions to oneself, others, and society.",0.9442794919013977,19.074890580597856
+18,7," Success in life is achieved through personal growth, fulfilling relationships, and making a positive impact on the world around you.",0.9673835039138794,13.449033332623012
+18,8," Success in life is achieving personal fulfillment, growth, and happiness, while positively impacting the lives of others.",0.9513317942619324,25.379537115329732
+18,9," Success in life is the fulfillment of personal goals, maintaining happiness and good relationships, and making a positive impact on others.",0.9603774547576904,22.039365187432306
+18,10," Success in life is achieved through personal growth, fulfilling relationships, and making a positive impact on the world around you.",0.9673835039138794,13.449033332623012
+18,11," Success in life means achieving personal fulfillment, growth, and happiness while making positive impacts on others and the world around us.",0.9587115049362183,22.18330462440518
+18,12," Success in life could be defined as achieving personal fulfillment, happiness, and making a positive impact on the world while maintaining integrity and balance.",0.9159591197967529,26.170122481564952
+18,13," Success in life is achieving personal happiness, fulfillment, and making a positive impact on others through hard work, determination, and integrity.",0.9607810378074646,19.344659962259996
+18,14," Success in life is achieving personal fulfillment, happiness, and making a positive impact on the world around you.",0.9608666300773621,14.848075405354965
+18,15," Success in life is achieving personal fulfillment and happiness, often through the pursuit of meaningful goals, while making a positive impact on others.",0.950821042060852,23.041642306176744
+18,16," Success in life is achieving personal fulfillment, happiness, and making a positive impact on others while continuously growing and learning.",0.963606595993042,31.976685742830526
+19,1," Rest allows our bodies and minds to recover, rejuvenate, and perform at their best, maintaining overall health and wellbeing.",0.8988491892814636,29.24315119535034
+19,2," People need rest to replenish energy, recover from physical and mental exertion, and maintain overall health and wellbeing.",0.4246637225151062,27.5068614830538
+19,3," Rest is essential for our bodies to recover, rejuvenate, and maintain optimal physical and mental health.",0.6266143321990967,16.23707179719772
+19,4," People need rest to rejuvenate their bodies and minds, reducing stress, improving focus, boosting productivity, and enhancing overall well-being.",0.8513932824134827,21.39872042822965
+19,5," People need rest to replenish energy, heal their bodies, and maintain optimal mental and physical performance.",0.3801547586917877,32.91463741990637
+19,6," People need rest to recharge their physical and mental energy, allowing them to perform daily tasks efficiently and maintain overall health and wellbeing.",0.5783417820930481,31.226646409935647
+19,7," People need rest to rejuvenate, recover physically and mentally, improve focus, and prevent burnout, ensuring optimal performance and well-being.",0.643854022026062,42.637887850643736
+19,8," People need rest to recharge their physical and mental energy, allowing them to perform daily tasks efficiently, maintain good health, and prevent burnout.",0.6359347701072693,27.437374020570832
+19,9," Rest is essential for our bodies and minds to rejuvenate, repair tissues, consolidate memories, and maintain overall wellbeing.",0.7079220414161682,42.33773053296778
+19,10," Rest is essential for the body to repair, recharge, and maintain physical health, cognitive function, emotional well-being, and overall productivity.",0.6784970760345459,19.577365076631626
+19,11," Rest is essential for the body to recover, rejuvenate, and maintain optimal physical and mental performance. It helps reduce stress, improve focus, and promote overall health and well-being.",0.8984795808792114,10.780813642822888
+19,12," Rest is essential for people to replenish energy, heal physically and mentally, improve focus, and maintain overall health and well-being.",0.7056856751441956,22.74088356981096
+19,13," People need rest to replenish their energy, heal their bodies, and maintain optimal mental function for overall wellbeing and productivity.",0.5697636604309082,47.4758040986973
+19,14," Rest is essential for people to rejuvenate, reduce stress, improve focus, and maintain overall physical and mental health.",0.7312714457511902,17.612845642844217
+19,15," Rest is essential for maintaining physical and mental well-being, allowing the body to recover, rejuvenate, and perform at optimal levels.",0.7609379887580872,14.335100978365158
+19,16," Rest is essential for people to replenish energy, heal the body, and maintain optimal mental function. It helps prevent burnout, boosts productivity, and promotes overall wellbeing.",0.8646145462989807,20.967112949069637
+20,1," Human connection is crucial because it fosters empathy, enhances mental health, provides support, and enriches our overall quality of life.",0.9414797425270081,19.91798641022848
+20,2," Human connection is crucial because it fosters emotional wellbeing, promotes understanding, and strengthens empathy, thereby creating a supportive and collaborative society.",0.9327765703201294,38.61978557196947
+20,3," Human connection is essential because it fosters empathy, strengthens relationships, enhances mental health, and adds joy to our lives.",0.9672438502311707,23.801231880427615
+20,4," Human connection is essential as it fosters empathy, mutual support, and promotes mental health and well-being by providing us with a sense of belonging and purpose.",0.940895676612854,17.938291504910314
+20,5," Human connection is essential because it fosters empathy, promotes mental wellbeing, and strengthens social bonds, contributing to a more supportive, understanding, and fulfilling society.",0.950572669506073,31.027955899142963
+20,6," Human connection is essential because it fosters empathy, builds trust, and improves our emotional well-being, promoting mental health, happiness, and personal growth.",0.9604012966156006,18.002906351726175
+20,7," Human connection is essential because it promotes emotional wellbeing, fosters empathy, and strengthens social support systems, enhancing our overall quality of life.",0.9522545337677002,31.194530262090385
+20,8," Human connection is essential because it fosters empathy, strengthens relationships, and enhances overall wellbeing, promoting mental health and emotional resilience.",0.9405213594436646,32.92119070220308
+20,9," Human connection is essential because it fosters empathy, reduces feelings of isolation, and promotes overall mental and emotional well-being.",0.9218980073928833,18.849924224521853
+20,10," Human connection is essential because it fosters empathy, promotes mental health, builds strong relationships, and enhances our overall sense of belonging and well-being.",0.9531682729721069,19.999633516347803
+20,11," Human connection is essential because it fosters empathy, builds trust, promotes mental wellbeing, and enriches our overall quality of life.",0.9558340311050415,22.15120302275835
+20,12," Human connection is essential because it fosters empathy, promotes mental health, builds trust, and strengthens social bonds, making us feel valued, understood, and less isolated.",0.9413127899169922,23.281655643918647
+20,13," Human connection is essential because it fosters empathy, understanding, and mutual support, enhancing our overall well-being and quality of life.",0.9601098299026489,16.703691128985184
+20,14," Human connection is essential because it fosters empathy, builds trust, promotes mental health, and enriches our overall quality of life.",0.9513095021247864,18.222138268681704
+20,15," Human connection is essential because it fosters emotional support, builds empathy, encourages growth, and enhances overall wellbeing.",0.9516240358352661,38.162808380586654
+20,16," Human connection is crucial because it fosters emotional well-being, builds trust, encourages empathy, and promotes a sense of belonging, contributing to overall happiness and mental health.",0.9488925933837891,18.592886907566676

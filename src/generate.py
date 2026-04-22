@@ -38,12 +38,12 @@ def getAllResponses(promptArray, maxN, rawGenerationCSVPath) :
             prompt_id = row[0]
             prompt = row[1]
 
-        for i in range(maxN):
-            curResponse = generateSingleResponse(prompt)
-            writer.writerow([prompt_id, i + 1, curResponse])
-            
-            # debugging 
-            print([prompt_id, i + 1, curResponse])
+            for i in range(maxN):
+                curResponse = generateSingleResponse(prompt)
+                writer.writerow([prompt_id, i + 1, curResponse])
+                
+                # debugging 
+                print([prompt_id, i + 1, curResponse])
     return
 
 def getResponsesChunk (promptArray, start_prompt_id, end_prompt_id, maxN) : 
