@@ -91,7 +91,11 @@ def compute_rlhf_reward(sentiment_score: float, kl_divergence: float, beta: floa
     Returns:
         Combined RLHF reward
     """
-    return sentiment_score - beta * kl_divergence
+    beta = float(beta)
+    kl_divergence = float(kl_divergence)
+    sentiment_score = float(sentiment_score)
+
+    return sentiment_score - (beta * kl_divergence)
 
 
 # getBestOfN function using beta value
@@ -149,7 +153,7 @@ def getAllBestOfN(beta) :
     '''
 
     import config
-    import utils
+    from src import utils
 
     scoredArr = utils.csvToArr(config.SCORED_GENERATIONS_PATH)
     allSelected = []

@@ -96,11 +96,14 @@ class FixedBetaSweepExperiment:
             top_sentiment = prompt_data['sentiment']
             top_kl = prompt_data['kl_divergence']
 
+            top_sentiment = float(top_sentiment)
+            top_kl = float(top_kl)
+
             # Check for repetition in top response
             words = top_response.lower().split()
             if len(words) > 0:
                 unique_ratio = len(set(words)) / len(words)
-                if unique_ratio < 0.8:  # More than 50% repeated words
+                if unique_ratio < 0.8:  # More than 20% repeated words
                     hacking_metrics['repetitive_responses'] += 1
 
             if top_sentiment > 0.8 and top_kl < 0.1: # High sentiment but low diversity could indicate hacking
@@ -128,7 +131,7 @@ class FixedBetaSweepExperiment:
                 'top_kl':       prompt_data['kl_divergence'],
                 'top_reward':   prompt_data['reward'],
                 'beta': prompt_data['beta'],
-                'n': prompt_data['n']
+                'N': prompt_data['N']
             })
 
         df = pd.DataFrame(rows)
@@ -143,9 +146,9 @@ class FixedBetaSweepExperiment:
         for beta, results in self.results.items():
             hacking = self.detect_hacking_behavior(results)
 
-            avg_sent   = sum(p['sentiment']    for p in results['prompts_data']) / len(results['prompts_data'])
-            avg_kl     = sum(p['kl_divergence'] for p in results['prompts_data']) / len(results['prompts_data'])
-            avg_reward = sum(p['reward']        for p in results['prompts_data']) / len(results['prompts_data'])
+            avg_sent   = sum(float(p['sentiment'])    for p in results['prompts_data']) / len(results['prompts_data'])
+            avg_kl     = sum(float(p['kl_divergence']) for p in results['prompts_data']) / len(results['prompts_data'])
+            avg_reward = sum(float(p['reward'])        for p in results['prompts_data']) / len(results['prompts_data'])
 
             summary_rows.append({
                 'beta': beta,
