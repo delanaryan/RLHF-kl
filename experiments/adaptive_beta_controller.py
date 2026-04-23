@@ -83,13 +83,6 @@ class AdaptiveKLController:
 
         return self.beta, action
 
-    def compute_rlhf_reward(self, sentiment_score: float, kl_divergence: float) -> float:
-        """
-        Compute RLHF reward with current adaptive β.
-
-        Reward = sentiment_score - β * KL_divergence
-        """
-        return sentiment_score - self.beta * kl_divergence
 
     def process_batch(self, batch_responses: List[str], batch_sentiments: List[float], step_num: int) -> Dict:
         """
@@ -161,7 +154,7 @@ class AdaptiveOptimizationExperiment:
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
-    def run_optimization(self, prompts: List[List[str]], num_steps: int = 10, best_of_n: int = 5) -> Dict:
+    def run_optimization(self, prompts: List[List[str]], num_steps: int = 10) -> Dict:
         """
         Run adaptive optimization across multiple steps.
 
@@ -190,20 +183,18 @@ class AdaptiveOptimizationExperiment:
 
             batch_responses = []
             batch_sentiments = []
+            beta = 0.01
 
             for prompt_row in prompts[1:]:
                 prompt_id = prompt_row[0]
 
-                best_candidate = generate.getBestOfN(
-                    prompt_id,
-                    beta,
-                    N=best_of_n,
-                )
+                best_candidate = generate.getAllBestOfN(prompt_id, beta)
 
-                response = best_candidate['response']
-                sentiment = best_candidate['sentiment_score']
-                kl = 0
-                reward = 0
+                response = best_candidate[3]
+                sentiment = best_candidate[4]
+                n = best_candidate[1]
+                kl_div = best_candidate[6]
+                reward = best_candidate[7]
 
                 batch_responses.append(response)
                 batch_sentiments.append(sentiment)
@@ -284,7 +275,7 @@ class AdaptiveOptimizationExperiment:
         print("\n=== OPTIMIZATION SUMMARY ===")
         print(summary_df.to_string(index=False))
 
-    def run_experiment(self, num_prompts: int = 3, num_steps: int = 10, reference=None):
+    def run_experiment(self, num_prompts: int = 3, num_steps: int = 10):
         """Execute the full adaptive optimization experiment"""
         # Load prompts
         import config as cfg
@@ -293,7 +284,7 @@ class AdaptiveOptimizationExperiment:
 
         print(f"Loaded {len(prompts)-1} prompts for adaptive optimization\n")
 
-        results = self.run_optimization(prompts, num_steps=num_steps, best_of_n=4, reference=reference)
+        results = self.run_optimization(prompts, num_steps=num_steps)
         self.save_results(results)
 
         print("\n" + "=" * 70)
