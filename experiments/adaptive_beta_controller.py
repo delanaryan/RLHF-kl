@@ -14,6 +14,7 @@ from pathlib import Path
 from dataclasses import dataclass
 import sys
 import os
+import numpy as np
 
 # Add parent directory to path to import src modules
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -84,7 +85,7 @@ class AdaptiveKLController:
         return self.beta, action
 
 
-    def process_batch(self, batch_responses: List[str], batch_sentiments: List[float], step_num: int) -> Dict:
+    def process_batch(self, batch_responses: List[str], batch_sentiments: List[float], batch_rewards: List[float], step_num: int, kl: 0.0) -> Dict:
         """
         Process a batch of generated responses and adjust β accordingly.
 
@@ -92,18 +93,13 @@ class AdaptiveKLController:
         batch_responses: Generated responses for this batch
         batch_sentiments: Sentiment scores for each response
         step_num: Current optimization step
+        kl: Average kl for this batch
 
         Returns: Dictionary with batch results and controller state
         """
 
-        current_kl = score.calculate_batch_kl(batch_responses, reference_responses=self.all_reference_responses)
+        current_kl = kl
         new_beta, action = self.adjust_beta(current_kl) # Adjust β based on KL divergence and get the action taken
-
-        # Calculate rewards using current β
-        batch_rewards = [
-            self.compute_rlhf_reward(sent, current_kl)
-            for sent in batch_sentiments
-        ]
 
         avg_sentiment = sum(batch_sentiments) / len(batch_sentiments) if batch_sentiments else 0
         avg_reward = sum(batch_rewards) / len(batch_rewards) if batch_rewards else 0
@@ -154,7 +150,7 @@ class AdaptiveOptimizationExperiment:
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
-    def run_optimization(self, prompts: List[List[str]], num_steps: int = 10) -> Dict:
+    def run_optimization(self, num_steps: int = 10) -> Dict:
         """
         Run adaptive optimization across multiple steps.
 
@@ -175,6 +171,7 @@ class AdaptiveOptimizationExperiment:
         print("=" * 70)
 
         all_prompt_results = []
+        beta = 0.01
 
         for step in range(num_steps):
             print(f"\n{'='*70}")
@@ -183,37 +180,45 @@ class AdaptiveOptimizationExperiment:
 
             batch_responses = []
             batch_sentiments = []
-            beta = 0.01
+            batch_rewards = []
+            batch_kl = []
 
-            for prompt_row in prompts[1:]:
-                prompt_id = prompt_row[0]
-
-                best_candidate = generate.getAllBestOfN(prompt_id, beta)
-
-                response = best_candidate[3]
-                sentiment = best_candidate[4]
-                n = best_candidate[1]
-                kl_div = best_candidate[6]
-                reward = best_candidate[7]
+            best_candidates = generate.getAllBestOfN(beta)
+            for candidate in best_candidates:
+                prompt_id = candidate[0]
+                response = candidate[3]
+                sentiment = candidate[4]
+                n = candidate[1]
+                kl_div = candidate[6]
+                reward = candidate[7]
+                perplexity = candidate[5]
 
                 batch_responses.append(response)
                 batch_sentiments.append(sentiment)
+                batch_rewards.append(reward)
+                batch_kl.append(kl_div)
 
                 all_prompt_results.append({
                     'step': step + 1,
                     'prompt_id': prompt_id,
                     'response': response,
                     'sentiment': sentiment,
-                    'N': best_of_n,
-                    'kl_divergence': kl,
+                    'perplexity': perplexity,
+                    'N': n,
+                    'kl_divergence': kl_div,
                     'reward': reward
                 })
 
+
+            avg_kl = np.mean(batch_kl)
             batch_result = self.controller.process_batch(
                 batch_responses,
                 batch_sentiments,
-                step + 1
+                batch_rewards,
+                step + 1,
+                avg_kl
             )
+            beta = batch_result['new_beta']
 
             self.controller.print_status(batch_result)
 
@@ -275,16 +280,10 @@ class AdaptiveOptimizationExperiment:
         print("\n=== OPTIMIZATION SUMMARY ===")
         print(summary_df.to_string(index=False))
 
-    def run_experiment(self, num_prompts: int = 3, num_steps: int = 10):
+    def run_experiment(self, num_steps: int = 10):
         """Execute the full adaptive optimization experiment"""
-        # Load prompts
-        import config as cfg
-        prompts = utils.csvToArr(cfg.PROMPT_PATH)
-        prompts = [prompts[0]] + prompts[1:num_prompts+1]
 
-        print(f"Loaded {len(prompts)-1} prompts for adaptive optimization\n")
-
-        results = self.run_optimization(prompts, num_steps=num_steps)
+        results = self.run_optimization(num_steps=num_steps)
         self.save_results(results)
 
         print("\n" + "=" * 70)
@@ -297,4 +296,4 @@ if __name__ == "__main__":
     config = AdaptiveControllerConfig(initial_beta=0.1, target_kl=0.5) # default config
 
     experiment = AdaptiveOptimizationExperiment(config=config)
-    experiment.run_experiment(num_prompts=3, num_steps=8)
+    experiment.run_experiment(num_steps=8)
