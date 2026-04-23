@@ -158,13 +158,14 @@ def getScoredResponses(prompt_id, scoredArr) :
 
 
 # helper function for getAllBestOfN()
-def getBestOfN (responsesCurPrompt, curN) :
+def getBestOfN (responsesCurPrompt, curN, beta=0.0) :
     '''
     Selects the best candidate for the current prompt_id and N value (the one with highest sentiment)
     
     Input :
         responsesCurPrompt : array containing the prompt generations and their score for a specific prompt_id
         curN : current value of N (in the Best-of-N sampling)
+        beta: beta value
 
     Output : 
         bestCandidate : single array, the generation with the highest sentiment score
@@ -180,7 +181,7 @@ def getBestOfN (responsesCurPrompt, curN) :
     return bestCandidate
         
 
-def getAllBestOfN(numOfPrompts, nValuesArr, scoredArr, fileName) :
+def getAllBestOfN(numOfPrompts, nValuesArr, scoredArr, fileName, beta=0.0) :
     '''
     For all prompts, and values of N, it selects the best response 
     (in sentiment standards) and groups all selected responses in an array. 
@@ -201,7 +202,7 @@ def getAllBestOfN(numOfPrompts, nValuesArr, scoredArr, fileName) :
         curPromptId = i+1
         responsesCurPrompt = getScoredResponses(curPromptId, scoredArr)
         for curN in nValuesArr : 
-            curSelection = getBestOfN(responsesCurPrompt, curN)
+            curSelection = getBestOfN(responsesCurPrompt, curN, beta)
             curCandidateId = curSelection[1]
             curResponse = curSelection[2]
             curSentiment = curSelection[3]
@@ -217,3 +218,20 @@ def getAllBestOfN(numOfPrompts, nValuesArr, scoredArr, fileName) :
             writer.writerow(row)
 
     return selectedCandidates
+
+def compute_rlhf_reward(sentiment_score: float, kl_divergence: float, beta: float) -> float:
+    """
+    Compute RLHF reward with KL penalty.
+
+    Reward = sentiment_score - β * KL_divergence
+    where β controls the strength of the KL constraint
+
+    Args:
+        sentiment_score: Reward signal from reward model (0-1)
+        kl_divergence: KL divergence from base model
+        beta: KL penalty coefficient
+
+    Returns:
+        Combined RLHF reward
+    """
+    return sentiment_score - beta * kl_divergence

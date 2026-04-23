@@ -35,23 +35,6 @@ class FixedBetaSweepExperiment:
         self.beta_values = [0.01, 0.1, 0.5, 1.0]
         self.results = {}
 
-    def compute_rlhf_reward(self, sentiment_score: float, kl_divergence: float, beta: float) -> float:
-        """
-        Compute RLHF reward with KL penalty.
-        
-        Reward = sentiment_score - β * KL_divergence
-        where β controls the strength of the KL constraint
-        
-        Args:
-            sentiment_score: Reward signal from reward model (0-1)
-            kl_divergence: KL divergence from base model
-            beta: KL penalty coefficient
-            
-        Returns:
-            Combined RLHF reward
-        """
-        return sentiment_score - beta * kl_divergence
-
     def run_optimization_loop(self, prompts: List[List[str]], beta: float, best_of_n: int = 5, reference=None) -> Dict:
         """
         Run a single optimization loop with fixed β value.
@@ -76,10 +59,7 @@ class FixedBetaSweepExperiment:
             prompt_id = prompt_row[0]
             prompt_text = prompt_row[1]
 
-            best_candidate = generate.generateBestOfN(
-                prompt_text,
-                N=best_of_n
-            )
+            best_candidate = generate.getBestOfN(prompt_text, best_of_n, beta)
 
             response = best_candidate['response']
             sentiment = best_candidate['sentiment_score']
