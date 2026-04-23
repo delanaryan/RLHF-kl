@@ -74,63 +74,146 @@ def getResponsesChunk (promptArray, start_prompt_id, end_prompt_id, maxN) :
                 print(prompt_id, i + 1, curResponse)
     return
 
-def generateBestOfN(prompt, N, verbose=False):
-    '''
-    Implements Best-of-N sampling with proxy scoring using RoBERTa sentiment.
-    Generates N distinct responses and selects the one with highest positivity score.
+# def generateBestOfN(prompt, N, verbose=False):
+#     '''
+#     Implements Best-of-N sampling with proxy scoring using RoBERTa sentiment.
+#     Generates N distinct responses and selects the one with highest positivity score.
     
-    input: a single prompt, the number of candidates N to generate, verbose flag for debugging (false by default, making it true will print out the generated candidates and their scores)
-    output: a dictionary with the best response and its sentiment score
-    '''
-    candidates = []
+#     input: a single prompt, the number of candidates N to generate, verbose flag for debugging (false by default, making it true will print out the generated candidates and their scores)
+#     output: a dictionary with the best response and its sentiment score
+#     '''
+#     candidates = []
     
-    for i in range(N):
-        response = generateSingleResponse(prompt)
-        sentiment_score = getSentimentScore(response)
-        candidates.append({
-            'candidate_id': i + 1,
-            'response': response,
-            'sentiment_score': sentiment_score
-        })
+#     for i in range(N):
+#         response = generateSingleResponse(prompt)
+#         sentiment_score = getSentimentScore(response)
+#         candidates.append({
+#             'candidate_id': i + 1,
+#             'response': response,
+#             'sentiment_score': sentiment_score
+#         })
         
-        if verbose:
-            print(f"Generated candidate {i+1}/{N} - Sentiment Score: {sentiment_score:.4f}")
+#         if verbose:
+#             print(f"Generated candidate {i+1}/{N} - Sentiment Score: {sentiment_score:.4f}")
     
-    best_candidate = max(candidates, key=lambda x: x['sentiment_score']) # Select best response based on highest positivity score
+#     best_candidate = max(candidates, key=lambda x: x['sentiment_score']) # Select best response based on highest positivity score
     
-    if verbose:
-        print(f"\nBest candidate selected: #{best_candidate['candidate_id']} with score {best_candidate['sentiment_score']:.4f}")
-        print(f"Response: {best_candidate['response']}\n")
+#     if verbose:
+#         print(f"\nBest candidate selected: #{best_candidate['candidate_id']} with score {best_candidate['sentiment_score']:.4f}")
+#         print(f"Response: {best_candidate['response']}\n")
     
-    return best_candidate
+#     return best_candidate
 
 
-def getAllBestOfN(promptArray, N, outputCSVPath, verbose=False):
-    '''
-    Applies Best-of-N sampling to all prompts and saves results to CSV.
+# def getAllBestOfN(promptArray, N, outputCSVPath, verbose=False):
+#     '''
+#     Applies Best-of-N sampling to all prompts and saves results to CSV.
     
-    input: an array of prompts, the number of candidates N to generate per prompt, and the path to save the best-of-N selections
-    output: a CSV file with the best response selected for each prompt
+#     input: an array of prompts, the number of candidates N to generate per prompt, and the path to save the best-of-N selections
+#     output: a CSV file with the best response selected for each prompt
+#     '''
+#     with open(outputCSVPath, "w", newline="", encoding="utf-8") as file:
+#         writer = csv.writer(file)
+#         writer.writerow(["prompt_id", "prompt", "best_response", "sentiment_score", "N"])
+        
+#         for row in promptArray[1:]:
+#             prompt_id = row[0]
+#             prompt = row[1]
+            
+#             best_candidate = generateBestOfN(prompt, N, verbose=verbose)
+            
+#             writer.writerow([
+#                 prompt_id,
+#                 prompt,
+#                 best_candidate['response'],
+#                 best_candidate['sentiment_score'],
+#                 N
+#             ])
+            
+#             if verbose:
+#                 print(f"Saved best-of-{N} for prompt {prompt_id}")
+    
+#     return
+
+
+# helper function for getAllBestOfN()
+def getScoredResponses(prompt_id, scoredArr) : 
     '''
-    with open(outputCSVPath, "w", newline="", encoding="utf-8") as file:
+    Fetches the rows corresponding to the prompt_id entered as input from the scoredGenerations array
+    
+    Inputs : 
+        prompt_id : id of the prompt we're interested in
+        scoredArr : array formed from the (alternate_)scoredGenerations.csv 
+
+    Outputs :
+        responsesCurPrompt : array of all the rows for the current query
+    '''
+
+    responsesCurPrompt = []
+    for response in scoredArr[1:] : # skipping the header
+        if (response[0] == str(prompt_id)) : 
+            responsesCurPrompt.append(response)
+    
+    return responsesCurPrompt
+
+
+# helper function for getAllBestOfN()
+def getBestOfN (responsesCurPrompt, curN) :
+    '''
+    Selects the best candidate for the current prompt_id and N value (the one with highest sentiment)
+    
+    Input :
+        responsesCurPrompt : array containing the prompt generations and their score for a specific prompt_id
+        curN : current value of N (in the Best-of-N sampling)
+
+    Output : 
+        bestCandidate : single array, the generation with the highest sentiment score
+    '''
+    candidates = responsesCurPrompt[:curN]
+    bestCandidate = max(candidates, key=lambda x: float(x[3]))
+
+    print("The best candidate for N = ", curN, " is : ")
+    print("\t- ", bestCandidate[2])
+    print("\t- Sentiment score : ", bestCandidate[3])
+    print("\t- Perplexity : ", bestCandidate[4])
+
+    return bestCandidate
+        
+
+def getAllBestOfN(numOfPrompts, nValuesArr, scoredArr, fileName) :
+    '''
+    For all prompts, and values of N, it selects the best response 
+    (in sentiment standards) and groups all selected responses in an array. 
+    It also stores the results in a CSV file
+    
+    Input : 
+        numOfPrompts: total number of prompts 
+        nValuesArr: array containing the values of N used for the best-of-n sampling
+        scoredArr: array formed from the (alternate_)scoredGenerations.csv  
+        fileName: Name of the CSV file, it will store the results of the best-of-n sampling
+
+    Output : 
+        selectedCandidates : array containing the selected responses 
+    '''
+
+    selectedCandidates = []
+    for i in range(numOfPrompts) : 
+        curPromptId = i+1
+        responsesCurPrompt = getScoredResponses(curPromptId, scoredArr)
+        for curN in nValuesArr : 
+            curSelection = getBestOfN(responsesCurPrompt, curN)
+            curCandidateId = curSelection[1]
+            curResponse = curSelection[2]
+            curSentiment = curSelection[3]
+            curPerplexity = curSelection[4]
+            newRow = [curPromptId, curN, curCandidateId, curResponse, curSentiment, curPerplexity]
+            selectedCandidates.append(newRow)
+    
+    # csv : 'prompt_id,current_N,candidate_id,response,sentiment_score,perplexity'
+    with open(fileName, "w", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
-        writer.writerow(["prompt_id", "prompt", "best_response", "sentiment_score", "N"])
-        
-        for row in promptArray[1:]:
-            prompt_id = row[0]
-            prompt = row[1]
-            
-            best_candidate = generateBestOfN(prompt, N, verbose=verbose)
-            
-            writer.writerow([
-                prompt_id,
-                prompt,
-                best_candidate['response'],
-                best_candidate['sentiment_score'],
-                N
-            ])
-            
-            if verbose:
-                print(f"Saved best-of-{N} for prompt {prompt_id}")
-    
-    return
+        writer.writerow(["prompt_id", "current_N", "candidate_id", "response", "sentiment_score", "perplexity"])
+        for row in selectedCandidates : 
+            writer.writerow(row)
+
+    return selectedCandidates
