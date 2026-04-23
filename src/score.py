@@ -220,7 +220,6 @@ def writeScoresToCSV(fileName, sentimentArr, perplexities, klScores) :
                 if (rowKLscores[0] == curPromptId) &  (rowKLscores[1] == curCandidateId) :
                     curKLscore = rowKLscores[3]
 
-<<<<<<< HEAD
             curRow = [curPromptId, curCandidateId, curResponse, curSentimentScore, curPerplexity, curKLscore]
             writer.writerow(curRow)
     return
@@ -231,18 +230,6 @@ def getScoredGenerations (fileName, promptsArr, responsesArr) :
     klScores = getAllKLdivergences(promptsArr, responsesArr) 
     writeScoresToCSV(fileName, sentimentArr, perplexities, klScores)
 
-def getKLDivergence(response):
-    '''
-    Estimates KL divergence via word uniqueness ratio.
-    Placeholder — will be replaced with real GPT-2 NLL later.
-    input:  a single response string
-    output: float KL estimate in [0, 2]
-    '''
-    words = response.lower().split()
-    if not words:
-        return 0.0
-    unique_ratio = len(set(words)) / len(words)
-    return max(0, (1.0 - unique_ratio) * 2.0)
 
 def getPenalizedReward(response, beta):
     '''
@@ -258,6 +245,3 @@ def getPenalizedReward(response, beta):
         'kl_divergence':     kl,
         'penalized_reward':  sentiment - beta * kl,
     }
-=======
-    return
->>>>>>> fc89383387d8c2d1219300e0118a83025711797a
