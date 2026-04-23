@@ -14,9 +14,20 @@ from src import plot
 
 class ExperimentRunner:
     """Utility for running and managing experiments"""
+    @staticmethod
+    def build_reference_responses(prompts, model_fn):
+        reference_responses = []
+
+        for prompt_row in prompts[1:]:
+            prompt_text = prompt_row[1]
+
+            response = model_fn(prompt_text)
+            reference_responses.append(response)
+
+        return reference_responses
 
     @staticmethod
-    def run_fixed_beta_sweep(num_prompts: int = 5, generations: int = 5) -> Path:
+    def run_fixed_beta_sweep(num_prompts: int = 5, generations: int = 5, reference=None) -> Path:
         """
         Run fixed-β sweep experiment.
 
@@ -30,11 +41,11 @@ class ExperimentRunner:
 
         from fixed_beta_sweep import FixedBetaSweepExperiment
         exp = FixedBetaSweepExperiment()
-        exp.run_sweep(num_prompts=num_prompts, generations_per_prompt=generations)
+        exp.run_sweep(num_prompts=num_prompts, generations_per_prompt=generations, reference=reference)
         return exp.output_dir
 
     @staticmethod
-    def run_adaptive_controller(num_prompts: int = 5, num_steps: int = 10) -> Path:
+    def run_adaptive_controller(num_prompts: int = 5, num_steps: int = 10, reference=None) -> Path:
         """
         Run adaptive β controller experiment.
 
@@ -48,7 +59,7 @@ class ExperimentRunner:
 
         from adaptive_beta_controller import AdaptiveOptimizationExperiment
         exp = AdaptiveOptimizationExperiment()
-        exp.run_experiment(num_prompts=num_prompts, num_steps=num_steps)
+        exp.run_experiment(num_prompts=num_prompts, num_steps=num_steps, reference=reference)
         return exp.output_dir
 
 class ResultsComparator:
@@ -167,9 +178,15 @@ def run_full_comparison(num_prompts: int = 5):
     print("FULL EXPERIMENTAL COMPARISON PROTOCOL")
     print("=" * 70)
 
+    from src import utils, generate
+    import config
+    promptArr = utils.csvToArr(config.PROMPT_PATH)
+    prompts   = [promptArr[0]] + promptArr[1:num_prompts + 1]
     runner = ExperimentRunner()
-    fixed_dir = runner.run_fixed_beta_sweep(num_prompts=num_prompts, generations=5)
-    adaptive_dir = runner.run_adaptive_controller(num_prompts=num_prompts, num_steps=10)
+    reference_responses = runner.build_reference_responses(prompts, generate.generateSingleResponse)
+
+    fixed_dir = runner.run_fixed_beta_sweep(num_prompts=num_prompts, generations=5, reference=reference_responses)
+    adaptive_dir = runner.run_adaptive_controller(num_prompts=num_prompts, num_steps=10, reference=reference_responses)
 
     comparator = ResultsComparator()
     fixed_results = comparator.load_fixed_beta_results(fixed_dir)
