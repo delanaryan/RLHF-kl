@@ -7,7 +7,6 @@
     # file paths
     # which sentiment model to use
 
-import os
 from pathlib import Path
 
 # Get the directory where config.py is located (project root)
