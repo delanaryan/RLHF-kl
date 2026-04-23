@@ -15,12 +15,10 @@ from src import plot
 class ExperimentRunner:
     """Utility for running and managing experiments"""
     @staticmethod
-    def run_fixed_beta_sweep(num_prompts: int = 5, generations: int = 5, reference=None) -> Path:
+    def run_fixed_beta_sweep() -> Path:
         """
         Run fixed-β sweep experiment.
 
-        Args:  num_prompts — number of prompts to use
-                generations — generations per prompt
         Returns: Path to results directory
         """
         print("\n" + "=" * 70)
@@ -29,11 +27,11 @@ class ExperimentRunner:
 
         from fixed_beta_sweep import FixedBetaSweepExperiment
         exp = FixedBetaSweepExperiment()
-        exp.run_sweep(num_prompts=num_prompts, generations_per_prompt=generations)
+        exp.run_sweep()
         return exp.output_dir
 
     @staticmethod
-    def run_adaptive_controller(num_prompts: int = 5, num_steps: int = 10) -> Path:
+    def run_adaptive_controller(num_steps: int = 10) -> Path:
         """
         Run adaptive β controller experiment.
 
@@ -47,7 +45,7 @@ class ExperimentRunner:
 
         from adaptive_beta_controller import AdaptiveOptimizationExperiment
         exp = AdaptiveOptimizationExperiment()
-        exp.run_experiment(num_prompts=num_prompts, num_steps=num_steps)
+        exp.run_experiment(num_steps=num_steps)
         return exp.output_dir
 
 class ResultsComparator:
@@ -167,8 +165,8 @@ def run_full_comparison(num_prompts: int = 5):
     print("=" * 70)
     runner = ExperimentRunner()
 
-    fixed_dir = runner.run_fixed_beta_sweep(num_prompts=num_prompts, generations=5)
-    adaptive_dir = runner.run_adaptive_controller(num_prompts=num_prompts, num_steps=10)
+    fixed_dir = runner.run_fixed_beta_sweep()
+    adaptive_dir = runner.run_adaptive_controller(num_steps=10)
 
     comparator = ResultsComparator()
     fixed_results = comparator.load_fixed_beta_results(fixed_dir)

@@ -11,9 +11,7 @@ This experiment sweeps through different β values (0.01, 0.1, 0.5, 1.0) and mon
 """
 
 import pandas as pd
-import csv
-import math
-from typing import List, Dict, Tuple
+from typing import Dict
 from pathlib import Path
 import sys
 import os
@@ -21,9 +19,7 @@ import os
 # parent directory path to import src modules
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from src import generate, score, utils
-import config
-
+from src import generate
 
 class FixedBetaSweepExperiment:
     """Runs optimization with fixed KL penalties to identify model hacking behavior"""

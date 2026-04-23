@@ -12,3 +12,4 @@ pandas             # Managing the experimental logs
 matplotlib         # Plotting the Reward vs. Perplexity frontier
 scikit-learn       # Basic normalization and data scaling
 seaborn            # Enhanced visualizations for the frontier plot
+numpy              # For computations
