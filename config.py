@@ -13,7 +13,7 @@ from pathlib import Path
 # Get the directory where config.py is located (project root)
 PROJECT_ROOT = Path(__file__).parent
 
-# N_VALUES = [1, 2, 4, 8]     # if we do N=16, then it would take too long to run
+N_VALUES = [1, 2, 4, 8, 16]
 MAX_N = 16
 BEST_OF_N = 8  # Number of candidates to generate in Best-of-N sampling
 

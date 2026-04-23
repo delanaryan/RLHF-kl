@@ -10,13 +10,11 @@ import torch
 import math
 import csv
 
-PERPLEXITY_MODEL = "gpt2"   # for the perplexity score
 SENTIMENT_MODEL = "cardiffnlp/twitter-roberta-base-sentiment" # for the sentiment score
-
-# Sentiment tokenizer's purpose is to convert the input text into a format that the sentiment model can understand, while the sentiment model's purpose is to analyze the sentiment of the input text and provide a sentiment score.
 sentiment_tokenizer = AutoTokenizer.from_pretrained(SENTIMENT_MODEL) 
 sentiment_model = AutoModelForSequenceClassification.from_pretrained(SENTIMENT_MODEL)
 
+PERPLEXITY_MODEL = "gpt2"   # for the perplexity score
 perplexity_tokenizer = AutoTokenizer.from_pretrained(PERPLEXITY_MODEL)
 perplexity_model = AutoModelForCausalLM.from_pretrained(PERPLEXITY_MODEL)
 
@@ -170,7 +168,7 @@ def calculate_batch_kl(responses: List[str], reference_responses: Optional[List[
     return sum(kl_values) / len(kl_values)
 
 
-def fillScoredGenerations(fileName, sentimentArr, perplexities) :
+def getScoredGenerations(fileName, sentimentArr, perplexities) :
     '''
     Combines the sentiment scores and perplexity scores into a single CSV file.
     input: the path to save the scored generations CSV file, an array of sentiment scores, and an array of perplexity scores
