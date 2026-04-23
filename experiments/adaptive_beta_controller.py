@@ -101,8 +101,8 @@ class AdaptiveKLController:
         current_kl = kl
         new_beta, action = self.adjust_beta(current_kl) # Adjust β based on KL divergence and get the action taken
 
-        avg_sentiment = sum(batch_sentiments) / len(batch_sentiments) if batch_sentiments else 0
-        avg_reward = sum(batch_rewards) / len(batch_rewards) if batch_rewards else 0
+        avg_sentiment = sum(float(x) for x in batch_sentiments) / len(batch_sentiments) if batch_sentiments else 0
+        avg_reward = sum(float(x) for x in batch_rewards) / len(batch_rewards) if batch_rewards else 0
 
         # history
         self.history['step'].append(step_num)
@@ -210,7 +210,7 @@ class AdaptiveOptimizationExperiment:
                 })
 
 
-            avg_kl = np.mean(batch_kl)
+            avg_kl = np.mean([float(x) for x in batch_kl])
             batch_result = self.controller.process_batch(
                 batch_responses,
                 batch_sentiments,
