@@ -96,6 +96,7 @@ def getAllPerplexities(responsesArr) :
 
     return perplexities  # find the perplexity for each response
 
+
 def _token_counts(text: str) -> Counter:
     '''
     tokenizes a text using the perplexity tokenizer and returns token frequencies.

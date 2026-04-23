@@ -1,12 +1,7 @@
-# send prompts to Llama
-# generate multiple candidates per prompt
-# return/save outputs
-
 import pandas as pd
 import ollama
 import csv
 from src.score import getSentimentScore
-import statistics
 
 def generateSingleResponse(prompt):
     '''
@@ -125,8 +120,9 @@ def getBestOfN (prompt_id, curBeta, curN, scoredArr) :
         curResponse = candidate[2]
         sentiment = candidate[3]
         perplexity = candidate[4]
-        kl_divergence = candidate[4]  
+        kl_divergence = candidate[5]  
 
+        # reward = -1 * (compute_rlhf_reward(sentiment, kl_divergence, curBeta))
         reward = compute_rlhf_reward(sentiment, kl_divergence, curBeta)
 
         newCandidate = [prompt_id, curN, candidateID, curResponse, sentiment, perplexity, kl_divergence, reward]
