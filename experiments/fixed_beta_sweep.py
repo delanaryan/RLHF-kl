@@ -35,12 +35,11 @@ class FixedBetaSweepExperiment:
         self.beta_values = [0.01, 0.1, 0.5, 1.0]
         self.results = {}
 
-    def run_optimization_loop(self, prompts: List[List[str]], beta: float) -> Dict:
+    def run_optimization_loop(self, beta: float) -> Dict:
         """
         Run a single optimization loop with fixed β value.
         
         Args:
-            prompts: List of prompts to optimize on
             beta: Fixed KL penalty coefficient
             
         Returns:
@@ -53,31 +52,28 @@ class FixedBetaSweepExperiment:
 
         all_responses = []
 
-        for prompt_row in prompts[1:]:  # Skip header
-            prompt_id = prompt_row[0]
-            prompt_text = prompt_row[1]
+        best_candidates = generate.getAllBestOfN(beta)
+        for candidate in best_candidates:
+            prompt_id = candidate[0]
+            response = candidate[3]
+            sentiment = candidate[4]
+            n = candidate[1]
+            kl_div = candidate[6]
+            reward = candidate[7]
+            perplexity = candidate[5]
 
-            best_candidates = generate.getAllBestOfN(prompt_id, beta)[0]
-            for candidate in best_candidates:
-                response = candidate[3]
-                sentiment = candidate[4]
-                n = candidate[1]
-                kl_div = candidate[6]
-                reward = candidate[7]
-                perplexity = candidate[5]
+            results['prompts_data'].append({
+                'prompt_id': prompt_id,
+                'response': response,
+                'sentiment': sentiment,
+                'perplexity': perplexity,
+                'kl_divergence': kl_div,
+                'reward': reward,
+                'beta': beta,
+                'N': n
+            })
 
-                results['prompts_data'].append({
-                    'prompt_id': prompt_id,
-                    'response': response,
-                    'sentiment': sentiment,
-                    'perplexity': perplexity,
-                    'kl_divergence': kl_div,
-                    'reward': reward,
-                    'beta': beta,
-                    'N': n
-                })
-
-                all_responses.append(response)
+            all_responses.append(response)
 
         return results
 
@@ -104,7 +100,7 @@ class FixedBetaSweepExperiment:
             words = top_response.lower().split()
             if len(words) > 0:
                 unique_ratio = len(set(words)) / len(words)
-                if unique_ratio < 0.5:  # More than 50% repeated words
+                if unique_ratio < 0.8:  # More than 50% repeated words
                     hacking_metrics['repetitive_responses'] += 1
 
             if top_sentiment > 0.8 and top_kl < 0.1: # High sentiment but low diversity could indicate hacking
@@ -126,11 +122,13 @@ class FixedBetaSweepExperiment:
         for prompt_data in results['prompts_data']:
             rows.append({
                 'prompt_id':    prompt_data['prompt_id'],
-                'prompt':       prompt_data['prompt'],
                 'top_response': prompt_data['response'],
                 'top_sentiment':prompt_data['sentiment'],
+                'top_perplexity':prompt_data['perplexity'],
                 'top_kl':       prompt_data['kl_divergence'],
                 'top_reward':   prompt_data['reward'],
+                'beta': prompt_data['beta'],
+                'n': prompt_data['n']
             })
 
         df = pd.DataFrame(rows)
@@ -165,24 +163,15 @@ class FixedBetaSweepExperiment:
         print("\n=== FIXED-β SWEEP SUMMARY ===")
         print(df.to_string(index=False))
 
-    def run_sweep(self, num_prompts: int = 5, generations_per_prompt: int = 5):
+    def run_sweep(self):
         """
         Execute the full fixed-β sweep experiment.
-
-        Args:
-            num_prompts: Number of prompts to use in sweep
-            generations_per_prompt: Number of generations per prompt per β value
         """
         print("=" * 60)
         print("FIXED-β SWEEP EXPERIMENT")
         print("=" * 60)
 
-        prompts = utils.csvToArr(config.PROMPT_PATH)
-        prompts = [prompts[0]] + prompts[1:num_prompts+1]
-
-        print(f"Loaded {len(prompts)-1} prompts")
         print(f"Testing β values: {self.beta_values}")
-        print(f"Generations per prompt: {generations_per_prompt}")
         print()
 
         for beta in self.beta_values:
@@ -190,7 +179,7 @@ class FixedBetaSweepExperiment:
             print(f"Running optimization with β={beta}")
             print(f"{'='*60}")
 
-            results = self.run_optimization_loop(prompts, beta, generations_per_prompt)
+            results = self.run_optimization_loop(beta)
             self.results[beta] = results
             self.save_results(results, beta)
 
@@ -206,4 +195,4 @@ if __name__ == "__main__":
     experiment = FixedBetaSweepExperiment()
 
     # Run with fewer prompts for testing (adjust for full experiment)
-    experiment.run_sweep(num_prompts=3, generations_per_prompt=4)
+    experiment.run_sweep()
