@@ -35,15 +35,13 @@ class FixedBetaSweepExperiment:
         self.beta_values = [0.01, 0.1, 0.5, 1.0]
         self.results = {}
 
-    def run_optimization_loop(self, prompts: List[List[str]], beta: float, best_of_n: int = 5, reference=None) -> Dict:
+    def run_optimization_loop(self, prompts: List[List[str]], beta: float) -> Dict:
         """
         Run a single optimization loop with fixed β value.
         
         Args:
             prompts: List of prompts to optimize on
             beta: Fixed KL penalty coefficient
-            best_of_n: Number of generations per prompt
-            reference: Reference responses
             
         Returns:
             Dictionary with results for this β value
@@ -59,12 +57,13 @@ class FixedBetaSweepExperiment:
             prompt_id = prompt_row[0]
             prompt_text = prompt_row[1]
 
-            best_candidate = generate.getBestOfN(prompt_text, best_of_n, beta)
+            best_candidate = generate.getAllBestOfN(prompt_id, beta)
 
-            response = best_candidate['response']
-            sentiment = best_candidate['sentiment_score']
-            kl_div = score.calculate_kl_divergence(response, reference)
-            reward = self.compute_rlhf_reward(sentiment, kl_div, beta)
+            response = best_candidate[3]
+            sentiment = best_candidate[4]
+            n = best_candidate[1]
+            kl_div = best_candidate[6]
+            reward = best_candidate[7]
 
             results['prompts_data'].append({
                 'prompt_id': prompt_id,
@@ -74,7 +73,7 @@ class FixedBetaSweepExperiment:
                 'kl_divergence': kl_div,
                 'reward': reward,
                 'beta': beta,
-                'N': best_of_n
+                'N': n
             })
 
             all_responses.append(response)
@@ -168,21 +167,20 @@ class FixedBetaSweepExperiment:
         print("\n=== FIXED-β SWEEP SUMMARY ===")
         print(df.to_string(index=False))
 
-    def run_sweep(self, num_prompts: int = 5, generations_per_prompt: int = 5, reference=None):
+    def run_sweep(self, num_prompts: int = 5, generations_per_prompt: int = 5):
         """
         Execute the full fixed-β sweep experiment.
 
         Args:
             num_prompts: Number of prompts to use in sweep
             generations_per_prompt: Number of generations per prompt per β value
-            reference: Reference responses
         """
         print("=" * 60)
         print("FIXED-β SWEEP EXPERIMENT")
         print("=" * 60)
 
         prompts = utils.csvToArr(config.PROMPT_PATH)
-        prompts = [prompts[0]] + prompts[1:num_prompts+1] # Limit to specified number of prompts
+        prompts = [prompts[0]] + prompts[1:num_prompts+1]
 
         print(f"Loaded {len(prompts)-1} prompts")
         print(f"Testing β values: {self.beta_values}")
@@ -194,7 +192,7 @@ class FixedBetaSweepExperiment:
             print(f"Running optimization with β={beta}")
             print(f"{'='*60}")
 
-            results = self.run_optimization_loop(prompts, beta, generations_per_prompt, reference)
+            results = self.run_optimization_loop(prompts, beta, generations_per_prompt)
             self.results[beta] = results
             self.save_results(results, beta)
 

@@ -220,6 +220,7 @@ def writeScoresToCSV(fileName, sentimentArr, perplexities, klScores) :
                 if (rowKLscores[0] == curPromptId) &  (rowKLscores[1] == curCandidateId) :
                     curKLscore = rowKLscores[3]
 
+<<<<<<< HEAD
             curRow = [curPromptId, curCandidateId, curResponse, curSentimentScore, curPerplexity, curKLscore]
             writer.writerow(curRow)
     return
@@ -257,3 +258,6 @@ def getPenalizedReward(response, beta):
         'kl_divergence':     kl,
         'penalized_reward':  sentiment - beta * kl,
     }
+=======
+    return
+>>>>>>> fc89383387d8c2d1219300e0118a83025711797a

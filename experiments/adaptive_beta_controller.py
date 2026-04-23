@@ -161,7 +161,7 @@ class AdaptiveOptimizationExperiment:
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
-    def run_optimization(self, prompts: List[List[str]], num_steps: int = 10, best_of_n: int = 5, reference=None) -> Dict:
+    def run_optimization(self, prompts: List[List[str]], num_steps: int = 10, best_of_n: int = 5) -> Dict:
         """
         Run adaptive optimization across multiple steps.
 
@@ -191,19 +191,19 @@ class AdaptiveOptimizationExperiment:
             batch_responses = []
             batch_sentiments = []
 
-            for prompt_row in prompts[1:]:  # Skip header
+            for prompt_row in prompts[1:]:
                 prompt_id = prompt_row[0]
-                prompt_text = prompt_row[1]
 
-                best_candidate = generate.generateBestOfN(
-                    prompt_text,
+                best_candidate = generate.getBestOfN(
+                    prompt_id,
+                    beta,
                     N=best_of_n,
                 )
 
                 response = best_candidate['response']
                 sentiment = best_candidate['sentiment_score']
-                from src import score
-                kl = score.calculate_batch_kl([response], reference)
+                kl = 0
+                reward = 0
 
                 batch_responses.append(response)
                 batch_sentiments.append(sentiment)
@@ -214,7 +214,8 @@ class AdaptiveOptimizationExperiment:
                     'response': response,
                     'sentiment': sentiment,
                     'N': best_of_n,
-                    'kl': kl
+                    'kl_divergence': kl,
+                    'reward': reward
                 })
 
             batch_result = self.controller.process_batch(
