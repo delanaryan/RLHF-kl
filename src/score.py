@@ -1,7 +1,3 @@
-# run the sentiment model
-# compute perplexity
-# combine scores into a dictionary or DataFrame
-
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, AutoModelForCausalLM
 from scipy.special import softmax
 from collections import Counter

@@ -76,31 +76,6 @@ def getResponsesChunk (promptArray, start_prompt_id, end_prompt_id, maxN) :
     return
 
 
-# def getBestOfN (responsesCurPrompt, curN, beta=0.0) :
-#     '''
-#     Selects the best candidate for the current prompt_id and N value (the one with highest sentiment)
-    
-#     Input :
-#         responsesCurPrompt : array containing the prompt generations and their score for a specific prompt_id
-#         curN : current value of N (in the Best-of-N sampling)
-#         beta: beta value
-
-#     Output : 
-#         bestCandidate : single array, the generation with the highest sentiment score
-#     '''
-
-
-#     candidates = responsesCurPrompt[:curN]
-#     bestCandidate = max(candidates, key=lambda x: float(x[3]))
-
-#     print("The best candidate for N = ", curN, " is : ")
-#     print("\t- ", bestCandidate[2])
-#     print("\t- Sentiment score : ", bestCandidate[3])
-#     print("\t- Perplexity : ", bestCandidate[4])
-
-#     return bestCandidate
-
-
 def compute_rlhf_reward(sentiment_score: float, kl_divergence: float, beta: float) -> float:
     """
     Compute RLHF reward with KL penalty.
@@ -119,7 +94,7 @@ def compute_rlhf_reward(sentiment_score: float, kl_divergence: float, beta: floa
     return sentiment_score - beta * kl_divergence
 
 
-# separate function using beta value
+# getBestOfN function using beta value
 def getBestOfN (prompt_id, curBeta, curN, scoredArr) :
     '''
     For the specified prompt_id, beta, and N value : 
@@ -139,12 +114,7 @@ def getBestOfN (prompt_id, curBeta, curN, scoredArr) :
             responsesCurPrompt.append(response)
 
     candidatesWithReward = []
-
     candidates = responsesCurPrompt[:curN]
-    allSentiments = []
-    allPerplexities = []
-    allKLdivergences = []
-    allRewards = []
 
     for candidate in candidates : 
         candidateID = candidate[1]
@@ -155,25 +125,13 @@ def getBestOfN (prompt_id, curBeta, curN, scoredArr) :
 
         reward = compute_rlhf_reward(sentiment, kl_divergence, curBeta)
 
-        # append all scores
-        allSentiments.append(sentiment)
-        allPerplexities.append(perplexity)
-        allKLdivergences.append(kl_divergence)
-        allRewards.append(reward)
-
         newCandidate = [prompt_id, curN, candidateID, curResponse, sentiment, perplexity, kl_divergence, reward]
         candidatesWithReward.append(newCandidate)
 
-    # calculate mean scores of all 16 prompts
-    meanSentiment = statistics.mean(allSentiments)
-    meanPerplexity = statistics.mean(allPerplexities)
-    meanKL = statistics.mean(allKLdivergences)
-    meanReward = statistics.mean(allRewards)
-    
     # using the reward as determining factor
     bestCandidate = max(candidatesWithReward, key=lambda x: float(x[7]))   
 
-    return bestCandidate, meanSentiment, meanPerplexity, meanKL, meanReward
+    return bestCandidate
 
 
 def getAllBestOfN(nValuesArr, beta, scoredArr) :
@@ -189,25 +147,17 @@ def getAllBestOfN(nValuesArr, beta, scoredArr) :
     Output : 
         selectedCandidates : array containing the selected responses 
     '''
+    allSelected = []
 
     for i in range(20) :    # there are 20 prompts
         curPromptId = i+1
 
-        allSelected = []
-        meanSentiments = []
-        meanPerplexities = []
-        meanKLs = []
-        meanRewards = []
         for curN in nValuesArr : 
-            curSelection, meanSentiment, meanPerplexity, meanKL, meanReward = getBestOfN(curPromptId, beta, curN, scoredArr)
+            curSelection = getBestOfN(curPromptId, beta, curN, scoredArr)
             
             allSelected.append(curSelection)
-            meanSentiments.append(meanSentiment)
-            meanPerplexities.append(meanPerplexity)
-            meanKLs.append(meanKL)
-            meanRewards.append(meanReward)
 
-    return allSelected, meanSentiments, meanPerplexities, meanKLs, meanRewards
+    return allSelected
 
 
 def build_reference_responses(prompts, model_fn):
