@@ -57,29 +57,27 @@ class FixedBetaSweepExperiment:
             prompt_id = prompt_row[0]
             prompt_text = prompt_row[1]
 
-            best_candidate = generate.getAllBestOfN(prompt_id, beta)
+            best_candidates = generate.getAllBestOfN(prompt_id, beta)[0]
+            for candidate in best_candidates:
+                response = candidate[3]
+                sentiment = candidate[4]
+                n = candidate[1]
+                kl_div = candidate[6]
+                reward = candidate[7]
+                perplexity = candidate[5]
 
-            response = best_candidate[3]
-            sentiment = best_candidate[4]
-            n = best_candidate[1]
-            kl_div = best_candidate[6]
-            reward = best_candidate[7]
+                results['prompts_data'].append({
+                    'prompt_id': prompt_id,
+                    'response': response,
+                    'sentiment': sentiment,
+                    'perplexity': perplexity,
+                    'kl_divergence': kl_div,
+                    'reward': reward,
+                    'beta': beta,
+                    'N': n
+                })
 
-            results['prompts_data'].append({
-                'prompt_id': prompt_id,
-                'prompt': prompt_text,
-                'response': response,
-                'sentiment': sentiment,
-                'kl_divergence': kl_div,
-                'reward': reward,
-                'beta': beta,
-                'N': n
-            })
-
-            all_responses.append(response)
-
-            print(f"β={beta} | Prompt {prompt_id}: sentiment={sentiment:.3f}, kl={kl_div:.3f}, reward={reward:.3f}")
-
+                all_responses.append(response)
 
         return results
 

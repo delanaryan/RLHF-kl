@@ -33,7 +33,7 @@ class ExperimentRunner:
         return exp.output_dir
 
     @staticmethod
-    def run_adaptive_controller(num_prompts: int = 5, num_steps: int = 10, reference=None) -> Path:
+    def run_adaptive_controller(num_prompts: int = 5, num_steps: int = 10) -> Path:
         """
         Run adaptive β controller experiment.
 
