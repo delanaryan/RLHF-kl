@@ -192,31 +192,3 @@ def getScoredGenerations(fileName, sentimentArr, perplexities) :
             writer.writerow(curRow)
 
     return
-
-def getKLDivergence(response):
-    '''
-    Estimates KL divergence via word uniqueness ratio.
-    Placeholder — will be replaced with real GPT-2 NLL later.
-    input:  a single response string
-    output: float KL estimate in [0, 2]
-    '''
-    words = response.lower().split()
-    if not words:
-        return 0.0
-    unique_ratio = len(set(words)) / len(words)
-    return max(0, (1.0 - unique_ratio) * 2.0)
-
-def getPenalizedReward(response, beta):
-    '''
-    Computes KL-penalized reward.
-    Reward = sentiment_score - beta * kl_divergence
-    input:  response string, beta float
-    output: dict with sentiment_score, kl_divergence, penalized_reward
-    '''
-    sentiment = getSentimentScore(response)
-    kl        = getKLDivergence(response)
-    return {
-        'sentiment_score':   sentiment,
-        'kl_divergence':     kl,
-        'penalized_reward':  sentiment - beta * kl,
-    }

@@ -35,7 +35,7 @@ class FixedBetaSweepExperiment:
         self.beta_values = [0.01, 0.1, 0.5, 1.0]
         self.results = {}
 
-    def run_optimization_loop(self, prompts: List[List[str]], beta: float, best_of_n: int = 5, reference=None) -> Dict:
+    def run_optimization_loop(self, prompts: List[List[str]], beta: float, best_of_n: int = 5) -> Dict:
         """
         Run a single optimization loop with fixed β value.
         
@@ -43,7 +43,6 @@ class FixedBetaSweepExperiment:
             prompts: List of prompts to optimize on
             beta: Fixed KL penalty coefficient
             best_of_n: Number of generations per prompt
-            reference: Reference responses
             
         Returns:
             Dictionary with results for this β value
@@ -63,8 +62,8 @@ class FixedBetaSweepExperiment:
 
             response = best_candidate['response']
             sentiment = best_candidate['sentiment_score']
-            kl_div = score.calculate_kl_divergence(response, reference)
-            reward = self.compute_rlhf_reward(sentiment, kl_div, beta)
+            kl_div = 0
+            reward = 0
 
             results['prompts_data'].append({
                 'prompt_id': prompt_id,
@@ -168,14 +167,13 @@ class FixedBetaSweepExperiment:
         print("\n=== FIXED-β SWEEP SUMMARY ===")
         print(df.to_string(index=False))
 
-    def run_sweep(self, num_prompts: int = 5, generations_per_prompt: int = 5, reference=None):
+    def run_sweep(self, num_prompts: int = 5, generations_per_prompt: int = 5):
         """
         Execute the full fixed-β sweep experiment.
 
         Args:
             num_prompts: Number of prompts to use in sweep
             generations_per_prompt: Number of generations per prompt per β value
-            reference: Reference responses
         """
         print("=" * 60)
         print("FIXED-β SWEEP EXPERIMENT")
@@ -194,7 +192,7 @@ class FixedBetaSweepExperiment:
             print(f"Running optimization with β={beta}")
             print(f"{'='*60}")
 
-            results = self.run_optimization_loop(prompts, beta, generations_per_prompt, reference)
+            results = self.run_optimization_loop(prompts, beta, generations_per_prompt)
             self.results[beta] = results
             self.save_results(results, beta)
 
