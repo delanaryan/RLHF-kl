@@ -6,7 +6,6 @@
     # make folders if missing
 
 import csv
-from pathlib import Path
 
 def csvToArr (fileName) : 
     # Convert Path to string if needed

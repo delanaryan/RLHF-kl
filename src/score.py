@@ -5,7 +5,7 @@
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, AutoModelForCausalLM
 from scipy.special import softmax
 from collections import Counter
-from typing import List, Optional
+from typing import List
 import torch
 import math
 import csv
@@ -100,83 +100,114 @@ def getAllPerplexities(responsesArr) :
 
     return perplexities  # find the perplexity for each response
 
-
 def _token_counts(text: str) -> Counter:
-    """Tokenize text and return token id frequencies."""
+    '''
+    tokenizes a text using the perplexity tokenizer and returns token frequencies.
+    input: a single response
+    output: Counter of token ids
+    '''
     if not text:
         return Counter()
 
-    encodings = perplexity_tokenizer(text, return_tensors="pt", truncation=True, max_length=1024)
+    encodings = perplexity_tokenizer(
+        text,
+        return_tensors="pt",
+        truncation=True,
+        max_length=1024
+    )
     token_ids = encodings["input_ids"][0].tolist()
     return Counter(token_ids)
 
 
 def _aggregate_counts(responses: List[str]) -> Counter:
-    """Aggregate token counts across multiple responses."""
+    '''
+    Aggregates token counts across multiple responses.
+    input: list of reference responses
+    output: Counter of token ids across all reference responses
+    '''
     aggregate = Counter()
+
     for text in responses:
         aggregate.update(_token_counts(text))
+
     return aggregate
 
 
-def calculate_kl_divergence(response: str, reference_responses: Optional[List[str]] = None, epsilon: float = 1e-12) -> float:
-    """Compute KL(P || Q) between a response distribution and a reference distribution."""
+def calculate_kl_divergence(response, reference_responses, epsilon=1e-12):
+    '''
+    calculates the KL divergence between one response and a set of reference responses.
+    input: 
+        response : a single response,
+        reference_responses : array of reference responses
+    output: 
+        float(kl) : the KL divergence score for the response
+    '''
     if not response:
         return 0.0
-
-    p_counts = _token_counts(response)
-    if not p_counts:
-        return 0.0
-
     if not reference_responses:
         return 0.0
 
+    p_counts = _token_counts(response)
     q_counts = _aggregate_counts(reference_responses)
-    if not q_counts:
+
+    if not p_counts or not q_counts:
         return 0.0
 
-    vocab = set(p_counts) | set(q_counts)
+    vocab = set(p_counts.keys()) | set(q_counts.keys())
     p_total = sum(p_counts.values())
     q_total = sum(q_counts.values())
+
     if p_total == 0 or q_total == 0:
         return 0.0
 
     vocab_size = len(vocab)
     kl = 0.0
+
     for token in vocab:
         p_prob = (p_counts.get(token, 0) + epsilon) / (p_total + epsilon * vocab_size)
         q_prob = (q_counts.get(token, 0) + epsilon) / (q_total + epsilon * vocab_size)
         kl += p_prob * math.log(p_prob / q_prob)
+
     return float(kl)
 
 
-def calculate_batch_kl(responses: List[str], reference_responses: Optional[List[str]] = None) -> float:
-    """Compute average KL divergence for a batch of responses."""
-    if not responses:
-        return 0.0
+def getAllKLdivergences(promptsArr, responsesArr):
+    '''
+    calculates the KL divergence scores for all responses in the responses array.
+    input: 
+        responsesArr : an array of responses
+    output: 
+        klScores : an array of KL divergence scores for each response
+    '''
+    klScores = []
 
-    if reference_responses is None:
-        if len(responses) == 1:
-            return 0.0
-        kl_values = []
-        for idx, response in enumerate(responses):
-            other_responses = [r for j, r in enumerate(responses) if j != idx]
-            kl_values.append(calculate_kl_divergence(response, other_responses))
-        return sum(kl_values) / len(kl_values)
+    # skip header
+    from src import generate
+    reference_responses = generate.build_reference_responses(promptsArr, generate.generateSingleResponse)
+    dataRows = responsesArr[1:]
 
-    kl_values = [calculate_kl_divergence(response, reference_responses) for response in responses]
-    return sum(kl_values) / len(kl_values)
+    for row in dataRows:
+        curPromptId = row[0]
+        curCandidateId = row[1]
+        curResponse = row[2]
 
+        curKL = calculate_kl_divergence(curResponse, reference_responses)
+        curRow = [curPromptId, curCandidateId, curResponse, curKL]
+        klScores.append(curRow)
 
-def getScoredGenerations(fileName, sentimentArr, perplexities) :
+    return klScores
+
+def writeScoresToCSV(fileName, sentimentArr, perplexities, klScores) :
     '''
     Combines the sentiment scores and perplexity scores into a single CSV file.
-    input: the path to save the scored generations CSV file, an array of sentiment scores, and an array of perplexity scores
-    output: a CSV file with the prompt id, candidate id, response, sentiment score and perplexity score for each response
+    input: 
+        the path to save the scored generations CSV file, an array of sentiment scores, and an array of perplexity scores
+    output: 
+        a CSV file with the prompt id, candidate id, response, sentiment score and perplexity score for each response
     '''
     with open(fileName, "w", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
-        writer.writerow(["prompt_id", "candidate_id", "response", "sentiment_score", "perplexity"])
+        writer.writerow(["prompt_id", "candidate_id", "response", "sentiment_score", "perplexity", "kl_divergence"])
         
         for rowSentiment in sentimentArr : 
             curPromptId = rowSentiment[0]
@@ -188,10 +219,20 @@ def getScoredGenerations(fileName, sentimentArr, perplexities) :
                 if (rowPerplexity[0] == curPromptId) &  (rowPerplexity[1] == curCandidateId) :
                     curPerplexity = rowPerplexity[3]
 
-            curRow = [curPromptId, curCandidateId, curResponse, curSentimentScore, curPerplexity]
-            writer.writerow(curRow)
+            for rowKLscores in klScores : 
+                # curRow = [curPromptId, curCandidateId, curResponse, curKL]
+                if (rowKLscores[0] == curPromptId) &  (rowKLscores[1] == curCandidateId) :
+                    curKLscore = rowKLscores[3]
 
+            curRow = [curPromptId, curCandidateId, curResponse, curSentimentScore, curPerplexity, curKLscore]
+            writer.writerow(curRow)
     return
+
+def getScoredGenerations (fileName, promptsArr, responsesArr) :
+    sentimentArr = getAllSentimentScores(responsesArr)
+    perplexities = getAllPerplexities(responsesArr)
+    klScores = getAllKLdivergences(promptsArr, responsesArr) 
+    writeScoresToCSV(fileName, sentimentArr, perplexities, klScores)
 
 def getKLDivergence(response):
     '''
