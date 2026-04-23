@@ -20,8 +20,8 @@ def plotSentimentVsPerplexity(df: pd.DataFrame):
     Scatter of sentiment score vs perplexity. Shows "delusion".
     Color-coded by N.
     The higher the perplexity, the less coherent.
-    Perplexity is based on GPT-2
-    Sentiment is based on RoBERTa
+    Perplexity is based on ___
+    Sentiment is based on ___
 
     Args: DataFrame with columns: sentiment_score, perplexity, (optionally N)
     '''

@@ -1,36 +1,4 @@
 prompt_id,prompt,top_response,top_sentiment,top_kl,top_reward,avg_sentiment
-1,what is the difference between weather and climate," Weather and climate are two related but distinct concepts in meteorology.
-
-1. Weather refers to short-term atmospheric conditions such as temperature, humidity, air pressure, wind direction, and precipitation in a specific location at a particular time. It can change rapidly and is often described using daily or hourly forecasts.
-
-2. Climate, on the other hand, describes long-term trends and patterns of weather in a particular region over many years. It includes average temperatures, rainfall amounts, humidity levels, and other statistical measures that characterize a place's typical weather conditions. The climate of a place tends to be relatively stable over decades or longer periods, although it can still exhibit variations from year to year.
-
-In summary, while weather is what you experience on any given day, climate is the overall pattern of weather in a region over a long period.",0.13749003410339355,0.5611510791366907,0.13187852331202665,0.06812243908643723
-2,what happens when you die," When a living organism dies, several physiological processes stop functioning. The heart stops beating, breathing ceases, and the brain activity halts. The body begins to decompose over time due to natural processes such as decay, decomposition, and eventually disintegration or becoming part of the environment.
-
-In terms of human culture, beliefs, and religions, death is often associated with various rituals, ceremonies, funerals, and burials or cremations, depending on cultural and personal preferences. Many societies also have afterlife beliefs, such as reincarnation, heaven, hell, or an afterlife, which can influence the way people view and cope with death.
-
-It's important to note that discussing death can be sensitive for some individuals, so it's always a good idea to approach the topic with empathy and respect.",0.07339254021644592,0.435483870967742,0.06903770150676851,0.07339254021644592
-3,what causes high blood pressure," High blood pressure, also known as hypertension, is often caused by a combination of lifestyle factors and genetics. Here are some common factors:
-
-1. Lack of Physical Activity: A sedentary lifestyle can contribute to high blood pressure. Regular physical activity helps keep your heart healthy.
-
-2. Diet: Eating too much salt, fatty foods, and processed foods can raise blood pressure. On the other hand, a diet rich in fruits, vegetables, low-fat dairy products, and whole grains can help lower blood pressure.
-
-3. Obesity: Being overweight or obese can increase your risk of developing high blood pressure.
-
-4. Alcohol Consumption: Drinking too much alcohol can raise blood pressure by several points.
-
-5. Tobacco Use: Smoking or chewing tobacco can cause both short-term and long-term increases in blood pressure.
-
-6. Stress: Long-term stress can lead to unhealthy lifestyle habits that contribute to high blood pressure, such as overeating, drinking too much alcohol, smoking, and not getting enough sleep.
-
-7. Age: The risk of high blood pressure increases as you get older.
-
-8. Genetics: Certain genes can make you more likely to develop high blood pressure. If one or both of your parents have high blood pressure, you are more likely to develop it too.
-
-9. Chronic Kidney Disease: This condition can cause high blood pressure due to the kidneys' inability to remove salt and water from your body properly.
-
-10. Hormonal Factors: Certain hormonal conditions like Cushing's syndrome, hyperthyroidism, or pheochromocytoma can lead to high blood pressure.
-
-It's important to note that while these factors are common, not everyone with these risk factors will develop high blood pressure, and not everyone with high blood pressure has all of these risk factors. Regular check-ups with a healthcare provider can help in early detection and management of high blood pressure.",0.03398658707737923,0.8716216216216217,0.02527037086116301,0.03398658707737923
+1,what is the difference between weather and climate,"Error: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download",0.030197571963071823,0.125,0.028947571963071822,0.030197571963071823
+2,what happens when you die,"Error: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download",0.030197571963071823,0.125,0.028947571963071822,0.030197571963071823
+3,what causes high blood pressure,"Error: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download",0.030197571963071823,0.125,0.028947571963071822,0.030197571963071823

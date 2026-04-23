@@ -18,57 +18,41 @@ class ExperimentRunner:
     @staticmethod
     def run_fixed_beta_sweep(num_prompts: int = 5, generations: int = 5) -> Path:
         """
-        Run fixed-β sweep experiment
-        
-        Args:
-            num_prompts: Number of prompts to use
-            generations: Generations per prompt
-            
-        Returns:
-            Path to results directory
+        Run fixed-β sweep experiment.
+
+        Args:  num_prompts — number of prompts to use
+                generations — generations per prompt
+        Returns: Path to results directory
         """
-        print("\n" + "="*70)
+        print("\n" + "=" * 70)
         print("LAUNCHING FIXED-β SWEEP EXPERIMENT")
-        print("="*70)
-        
-        try:
-            from fixed_beta_sweep import FixedBetaSweepExperiment
-            exp = FixedBetaSweepExperiment()
-            exp.run_sweep(num_prompts=num_prompts, generations_per_prompt=generations)
-            return exp.output_dir
-        except Exception as e:
-            print(f"Error running fixed-β sweep: {e}")
-            raise
-    
+        print("=" * 70)
+
+        from fixed_beta_sweep import FixedBetaSweepExperiment
+        exp = FixedBetaSweepExperiment()
+        exp.run_sweep(num_prompts=num_prompts, generations_per_prompt=generations)
+        return exp.output_dir
+
     @staticmethod
     def run_adaptive_controller(num_prompts: int = 5, num_steps: int = 10) -> Path:
         """
-        Run adaptive β controller experiment
-        
-        Args:
-            num_prompts: Number of prompts to use
-            num_steps: Number of optimization steps
-            
-        Returns:
-            Path to results directory
-        """
-        print("\n" + "="*70)
-        print("LAUNCHING ADAPTIVE β CONTROLLER EXPERIMENT")
-        print("="*70)
-        
-        try:
-            from adaptive_beta_controller import AdaptiveOptimizationExperiment
-            exp = AdaptiveOptimizationExperiment()
-            exp.run_experiment(num_prompts=num_prompts, num_steps=num_steps)
-            return exp.output_dir
-        except Exception as e:
-            print(f"Error running adaptive controller: {e}")
-            raise
+        Run adaptive β controller experiment.
 
+        Args:  num_prompts — number of prompts to use
+                num_steps — number of optimization steps
+        Returns: Path to results directory
+        """
+        print("\n" + "=" * 70)
+        print("LAUNCHING ADAPTIVE β CONTROLLER EXPERIMENT")
+        print("=" * 70)
+
+        from adaptive_beta_controller import AdaptiveOptimizationExperiment
+        exp = AdaptiveOptimizationExperiment()
+        exp.run_experiment(num_prompts=num_prompts, num_steps=num_steps)
+        return exp.output_dir
 
 class ResultsComparator:
-    """Utilities for comparing experimental results"""
-    
+
     @staticmethod
     def load_fixed_beta_results(results_dir: Path) -> Dict[float, pd.DataFrame]:
         """
@@ -78,7 +62,6 @@ class ResultsComparator:
         """
         results = {}
         for file in results_dir.glob("beta_*.csv"):
-            # Extract β value from filename. Support names like beta_0.10_results.csv.
             beta_str = file.stem.replace("beta_", "")
             if beta_str.endswith("_results"):
                 beta_str = beta_str[: -len("_results")]
@@ -156,8 +139,7 @@ class ResultsComparator:
         """
         print("\n" + "=" * 70)
         print("EXPERIMENTAL COMPARISON REPORT")
-        print("="*70)
-        
+        print("=" * 70)
         print("\n" + comparison_df.to_string(index=False))
 
         best       = comparison_df.loc[comparison_df['avg_reward'].idxmax()]
@@ -177,15 +159,14 @@ class ResultsComparator:
 
 def run_full_comparison(num_prompts: int = 5):
     """
-    Run both experiments and generate comparison report
-    
-    Args:
-        num_prompts: Number of prompts to use in experiments
+    Run both experiments then generate the full comparison report and plots.
+
+    Args: num_prompts — number of prompts to use in both experiments
     """
-    print("\n" + "="*70)
+    print("\n" + "=" * 70)
     print("FULL EXPERIMENTAL COMPARISON PROTOCOL")
-    print("="*70)
-    
+    print("=" * 70)
+
     runner = ExperimentRunner()
     fixed_dir = runner.run_fixed_beta_sweep(num_prompts=num_prompts, generations=5)
     adaptive_dir = runner.run_adaptive_controller(num_prompts=num_prompts, num_steps=10)
@@ -215,5 +196,4 @@ def run_full_comparison(num_prompts: int = 5):
 
 
 if __name__ == "__main__":
-    # Run full comparison with default settings
     run_full_comparison(num_prompts=3)

@@ -70,11 +70,12 @@ def test_core_functions():
     
     try:
         from fixed_beta_sweep import FixedBetaSweepExperiment
+        from src import score
         exp = FixedBetaSweepExperiment()
         
         # Test KL calculation
         test_response = "This is a test response with some variety"
-        kl = exp.calculate_kl_divergence(test_response, [])
+        kl = score.calculate_kl_divergence(test_response, [])
         print(f"✓ KL divergence calculation works: {kl:.4f}")
         
         # Test reward calculation

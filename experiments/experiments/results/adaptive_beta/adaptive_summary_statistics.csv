@@ -3,9 +3,9 @@ Initial β,0.0100
 Final β,0.0516
 Min β,0.0100
 Max β,0.0516
-Average KL Divergence,2.4536
-Final KL Divergence,1.8952
-Average Sentiment,0.0654
-Average Reward,0.0037
+Average KL Divergence,2.3877
+Final KL Divergence,1.8466
+Average Sentiment,0.0640
+Average Reward,0.0054
 Times β Increased,9
 Times β Decreased,1
