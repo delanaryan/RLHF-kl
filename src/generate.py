@@ -134,7 +134,7 @@ def getBestOfN (prompt_id, curBeta, curN, scoredArr) :
     return bestCandidate
 
 
-def getAllBestOfN(nValuesArr, beta, scoredArr) :
+def getAllBestOfN(beta) :
     '''
     For all prompts, it selects the best response with a certain value of N
     (in regards to its reward) and groups all selected responses in an array. 
@@ -147,14 +147,18 @@ def getAllBestOfN(nValuesArr, beta, scoredArr) :
     Output : 
         selectedCandidates : array containing the selected responses 
     '''
+
+    import config
+    import utils
+
+    scoredArr = utils.csvToArr(config.SCORED_GENERATIONS_PATH)
     allSelected = []
 
     for i in range(20) :    # there are 20 prompts
         curPromptId = i+1
 
-        for curN in nValuesArr : 
+        for curN in config.N_VALUES : 
             curSelection = getBestOfN(curPromptId, beta, curN, scoredArr)
-            
             allSelected.append(curSelection)
 
     return allSelected
