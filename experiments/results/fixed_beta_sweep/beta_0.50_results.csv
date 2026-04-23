@@ -1,26 +1,4 @@
 prompt_id,prompt,top_response,top_sentiment,top_kl,top_reward,avg_sentiment
-1,what is the difference between weather and climate," Weather and climate are two closely related but distinct concepts that describe the atmospheric conditions around us. Here's a simple way to understand the difference:
-
-1. **Weather**: Refers to short-term atmospheric conditions such as temperature, humidity, precipitation, cloud cover, air pressure, wind speed and direction over hours, days, or weeks at a specific location. Weather can change frequently and is often described using terms like sunny, rainy, or snowy.
-
-2. **Climate**: Represents the long-term pattern of weather in a particular region over a period of 30 years or more. Climate takes into account temperature, humidity, precipitation, and wind patterns averaged over time. It provides an overall picture of what kind of weather to expect in a given location and season.
-
-In summary, while the weather can change from day-to-day or even hour-by-hour, climate describes the typical long-term atmospheric conditions for a region based on historical data.",0.10732629895210266,0.5890410958904109,-0.18719424899310277,0.10732629895210266
-2,what happens when you die," The concept of death is a complex topic and varies greatly among different cultures, religions, and philosophical beliefs. From a biological perspective, when a person dies, the brain stops functioning, the heart stops beating, and breathing ceases. This usually follows irreversible loss of brain function due to conditions like cardiac arrest or brain anoxia (lack of oxygen).
-
-However, beyond the physical aspects, many people believe in afterlife concepts such as reincarnation, heaven, hell, or nothingness. These beliefs are deeply rooted in various religions and cultural traditions. It's important to remember that everyone's perspective on death can be unique and personal. If you have specific questions about a particular belief system, I would recommend consulting resources or experts familiar with that system.",0.04340020939707756,0.3471074380165289,-0.13015350961118688,0.11546057462692261
-3,what causes high blood pressure," High blood pressure, also known as hypertension, is often caused by a combination of factors:
-
-1. Lifestyle factors: Poor diet, physical inactivity, excessive alcohol consumption, and tobacco use can all contribute to the development of high blood pressure.
-
-2. Obesity: Excess weight, particularly around the waist, increases the risk of developing high blood pressure.
-
-3. Age: The risk of high blood pressure increases as you get older. Nearly half of Americans over age 65 have high blood pressure.
-
-4. Family history: If a close family member has high blood pressure, you're more likely to develop it yourself. This may be due to genetics, or shared lifestyle habits and environmental factors.
-
-5. Chronic conditions: Certain chronic conditions, such as kidney disease, diabetes, and high cholesterol, can increase the risk of high blood pressure.
-
-6. Stress: Chronic stress can lead to unhealthy behaviors that contribute to high blood pressure, such as overeating, lack of exercise, smoking, and drinking too much alcohol. It can also trigger stress responses in your body that temporarily raise your blood pressure.
-
-7. Other factors: Certain medications (like birth control pills, non-steroidal anti-inflammatory drugs, and corticosteroids), sleep apnea, and caffeine consumption may also contribute to high blood pressure in some individuals.",0.010532259941101074,0.7192118226600985,-0.3490736513889482,0.010532259941101074
+1,"In a short plain-language sentence (max 25 words), explain what is the difference between weather and climate"," Weather describes short-term atmospheric conditions like rain or temperature, while climate refers to long-term patterns in temperature, precipitation, and wind over several decades.",0.04548702389001846,0.0,0.04548702389001846,0.04548702389001846
+2,"In a short plain-language sentence (max 25 words), explain what happens when someone dies."," When someone dies, their bodily functions cease and they no longer breathe or have a heartbeat. This is irreversible and marks the end of life.",0.005267973989248276,5.21538860476821,-2.6024263283948565,0.003670287551358342
+3,"In a short plain-language sentence (max 25 words), explain what causes high blood pressure"," High blood pressure is primarily caused by lifestyle factors such as poor diet, lack of exercise, obesity, and excessive alcohol consumption, combined with genetic predisposition. Stress can also play a role.",0.005190443247556686,4.211062568589633,-2.10034084104726,0.003242027247324586
