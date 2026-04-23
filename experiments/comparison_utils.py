@@ -29,7 +29,7 @@ class ExperimentRunner:
 
         from fixed_beta_sweep import FixedBetaSweepExperiment
         exp = FixedBetaSweepExperiment()
-        exp.run_sweep(num_prompts=num_prompts, generations_per_prompt=generations, reference=reference)
+        exp.run_sweep(num_prompts=num_prompts, generations_per_prompt=generations)
         return exp.output_dir
 
     @staticmethod
@@ -47,7 +47,7 @@ class ExperimentRunner:
 
         from adaptive_beta_controller import AdaptiveOptimizationExperiment
         exp = AdaptiveOptimizationExperiment()
-        exp.run_experiment(num_prompts=num_prompts, num_steps=num_steps, reference=reference)
+        exp.run_experiment(num_prompts=num_prompts, num_steps=num_steps)
         return exp.output_dir
 
 class ResultsComparator:
