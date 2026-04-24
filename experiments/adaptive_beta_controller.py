@@ -58,6 +58,15 @@ class AdaptiveKLController:
         }
         self.all_reference_responses = []
 
+    def normalize_kl(self, kl_value: float) -> float:
+        """
+        Maps KL [0, inf) to [0, 1] using exponential squashing.
+        This ensures 1.0 is the theoretical maximum penalty.
+        """ 
+        # to change how 'aggressive' the normalization is, add scale factor in exp
+        return 1 - np.exp(-kl_value)
+
+
     def adjust_beta(self, current_kl: float) -> Tuple[float, str]:
         """
         Threshold-based step function for β adjustment.
@@ -70,6 +79,7 @@ class AdaptiveKLController:
         Input: current_kl: Measured KL divergence from batch
         Returns: Tuple of (new_beta, action_taken)
         """
+        current_kl = self.normalize_kl(current_kl)
         old_beta = self.beta
         action = 'no_change'
 
@@ -98,8 +108,9 @@ class AdaptiveKLController:
         Returns: Dictionary with batch results and controller state
         """
 
-        current_kl = kl
-        new_beta, action = self.adjust_beta(current_kl) # Adjust β based on KL divergence and get the action taken
+        #urrent_kl = kl
+        norm_kl = self.normalize_kl(kl)
+        new_beta, action = self.adjust_beta(norm_kl) # Adjust β based on KL divergence and get the action taken
 
         avg_sentiment = sum(float(x) for x in batch_sentiments) / len(batch_sentiments) if batch_sentiments else 0
         avg_reward = sum(float(x) for x in batch_rewards) / len(batch_rewards) if batch_rewards else 0
@@ -107,7 +118,7 @@ class AdaptiveKLController:
         # history
         self.history['step'].append(step_num)
         self.history['beta'].append(self.beta)
-        self.history['kl_divergence'].append(current_kl)
+        self.history['kl_divergence'].append(norm_kl)
         self.history['sentiment_score'].append(avg_sentiment)
         self.history['reward'].append(avg_reward)
         self.history['beta_action'].append(action)
@@ -118,7 +129,7 @@ class AdaptiveKLController:
             'step': step_num,
             'old_beta': new_beta / self.config.beta_increase_factor if action == 'increase' else (new_beta / self.config.beta_decrease_factor if action == 'decrease' else new_beta),
             'new_beta': self.beta,
-            'current_kl': current_kl,
+            'current_kl': norm_kl,
             'target_kl': self.config.target_kl,
             'avg_sentiment': avg_sentiment,
             'avg_reward': avg_reward,

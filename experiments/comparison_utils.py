@@ -19,7 +19,7 @@ class ExperimentRunner:
         """
         Run fixed-β sweep experiment.
 
-        Returns: Path to results directory
+        Returns: Path to results directory 
         """
         print("\n" + "=" * 70)
         print("LAUNCHING FIXED-β SWEEP EXPERIMENT")
