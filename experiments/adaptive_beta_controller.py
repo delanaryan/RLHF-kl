@@ -150,7 +150,7 @@ class AdaptiveOptimizationExperiment:
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
-    def run_optimization(self, num_steps: int = 10) -> Dict:
+    def run_optimization(self, num_steps: int = 30) -> Dict:
         """
         Run adaptive optimization across multiple steps.
 

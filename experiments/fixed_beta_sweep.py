@@ -28,7 +28,7 @@ class FixedBetaSweepExperiment:
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
-        self.beta_values = [0.01, 0.1, 0.5, 1.0]
+        self.beta_values = [0.0001, 0.001, 0.01, 0.05, 0.1, 0.25, 0.5, 0.75, 1.0]
         self.results = {}
 
     def run_optimization_loop(self, beta: float) -> Dict:

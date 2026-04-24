@@ -31,7 +31,7 @@ class ExperimentRunner:
         return exp.output_dir
 
     @staticmethod
-    def run_adaptive_controller(num_steps: int = 10) -> Path:
+    def run_adaptive_controller(num_steps: int = 30) -> Path:
         """
         Run adaptive β controller experiment.
 
@@ -166,7 +166,7 @@ def run_full_comparison(num_prompts: int = 5):
     runner = ExperimentRunner()
 
     fixed_dir = runner.run_fixed_beta_sweep()
-    adaptive_dir = runner.run_adaptive_controller(num_steps=10)
+    adaptive_dir = runner.run_adaptive_controller(num_steps=30)
 
     comparator = ResultsComparator()
     fixed_results = comparator.load_fixed_beta_results(fixed_dir)
